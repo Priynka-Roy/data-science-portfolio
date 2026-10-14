@@ -12,7 +12,7 @@ Reviewed 14 October 2026 against the supplied task, original résumé text/link 
 
 ## Actionable wording finding
 
-The shared case-study results eyebrow initially read “Measured, not assumed.” This is too broad for EnerTwin's hypothetical-workload feasibility results. Prefer “Computed evidence” or “Reported results” while keeping per-result qualifiers. The root/frontend owner was notified; no frontend file was edited by this reviewer.
+The shared case-study results eyebrow initially read “Measured, not assumed.” This is too broad for EnerTwin's hypothetical-workload feasibility results. Prefer “Computed evidence” or “Reported results” while keeping per-result qualifiers. The wording was corrected to “Computed evidence” before publication.
 
 ## Public app HTTP check
 

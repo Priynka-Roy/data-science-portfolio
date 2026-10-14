@@ -1,5 +1,7 @@
 # Priynka Roy — Data Science Portfolio
 
+[View the live portfolio](https://data-science-portfolio-olive.vercel.app/)
+
 A professional portfolio for Priynka Roy, an MSc Mathematics and Statistics student specializing in Statistics at the University of Turku, Finland.
 
 The website presents statistical research and two completed industrial data science projects with their current V2 evidence, methods, and limitations.
