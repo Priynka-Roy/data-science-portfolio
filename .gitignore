@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+coverage/
+.vercel/
+.env*
+!.env.example
+.DS_Store
+Priynka-Roy-Resume.pdf
+Profilep.jpg
+tmp/
+*.log
+
+*.tsbuildinfo
