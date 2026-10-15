@@ -41,7 +41,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="hero-disciplines">
-            Statistics / Machine learning / Industrial analytics
+            Statistics / Machine learning / Industrial & financial analytics
           </p>
           <p className="hero-intro">{profile.intro}</p>
           <div className="hero-actions">
@@ -86,7 +86,7 @@ export default function Home() {
         <div className="container">
           <span>A statistical foundation.</span>
           <span>A practical approach.</span>
-          <span>Two industrial projects.</span>
+          <span>Three applied data science projects.</span>
         </div>
       </div>
       <section
@@ -133,13 +133,13 @@ export default function Home() {
               <h2 id="projects-title">
                 Statistics meets
                 <br />
-                industrial challenges.
+                industrial & financial challenges.
               </h2>
             </div>
             <p className="heading-aside">
-              Two independent projects exploring equipment health and energy
-              decisions. Real data, transparent evaluation, and working
-              applications.
+              Three independent projects exploring equipment health, energy
+              decisions, and credit risk. Real data, transparent evaluation, and
+              working applications.
             </p>
           </div>
           <div className="project-grid">

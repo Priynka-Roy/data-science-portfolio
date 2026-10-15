@@ -17,10 +17,10 @@ export async function generateMetadata({
   const siteUrl = getSiteUrl();
   return project
     ? {
-        title: `${project.name} — ${project.title}`,
+        title: project.seoTitle ?? `${project.name} — ${project.title}`,
         description: project.summary,
         ...(siteUrl ? { alternates: { canonical: `${siteUrl}/projects/${slug}` } } : {}),
-        openGraph: { title: `${project.name} — ${project.title}`, description: project.summary, type: "website", images: ["/opengraph-image"], ...(siteUrl ? { url: `${siteUrl}/projects/${slug}` } : {}) },
+        openGraph: { title: project.seoTitle ?? `${project.name} — ${project.title}`, description: project.summary, type: "website", images: ["/opengraph-image"], ...(siteUrl ? { url: `${siteUrl}/projects/${slug}` } : {}) },
       }
     : {};
 }

@@ -32,9 +32,9 @@ export const profile = {
 
 export const skillGroups: SkillGroup[] = [
   { title: "Programming & Data Analysis", items: ["Python", "R", "pandas", "NumPy", "SPSS"] },
-  { title: "Statistics & Modeling", items: ["Statistical inference", "Regression analysis", "Time-series analysis", "Statistical modeling", "Forecast evaluation"] },
-  { title: "Machine Learning", items: ["scikit-learn", "Supervised learning", "Unsupervised learning", "Anomaly detection", "Gradient boosting", "Explainability"] },
-  { title: "Optimization & Simulation", items: ["Linear programming", "SciPy HiGHS", "Scenario analysis", "Finite-scenario robust optimization", "Decision support"] },
+  { title: "Statistics & Modeling", items: ["Statistical inference", "Regression analysis", "Time-series analysis", "Statistical modeling", "Forecast evaluation", "Probability calibration", "Bootstrap inference", "Credit risk modeling"] },
+  { title: "Machine Learning", items: ["scikit-learn", "Supervised learning", "Unsupervised learning", "Anomaly detection", "Gradient boosting", "Explainability", "Model validation"] },
+  { title: "Optimization & Simulation", items: ["Linear programming", "SciPy HiGHS", "Scenario analysis", "Finite-scenario robust optimization", "Decision support", "Monte Carlo simulation"] },
   { title: "Visualization & Tools", items: ["Power BI", "Plotly", "Streamlit", "Git", "GitHub", "Microsoft Excel"] },
 ];
 

@@ -1,8 +1,16 @@
-export type ProjectSection = { title: string; paragraphs: string[]; bullets?: string[] };
+export type ProjectSection = {
+  title: string;
+  paragraphs: string[];
+  bullets?: string[];
+  table?: { caption: string; columns: string[]; rows: string[][] };
+  visual?: { src: string; alt: string; caption: string };
+};
 export type Project = {
   slug: string;
   name: string;
   title: string;
+  category?: string;
+  seoTitle?: string;
   summary: string;
   image: string;
   imageAlt: string;
@@ -21,6 +29,8 @@ const industrialGuard = "https://github.com/Priynka-Roy/industrialguard-explaina
 const industrialDocs = `${industrialGuard}/blob/main/explainable-predictive-maintenance/docs`;
 const enerTwin = "https://github.com/Priynka-Roy/enertwin-industrial-energy-digital-twin";
 const energyDocs = `${enerTwin}/blob/main/docs`;
+const creditRisk = "https://github.com/Priynka-Roy/creditrisk-ai-explainable-credit-risk";
+const creditDocs = `${creditRisk}/blob/c561888742e020a52448df28fffa6a1986bfbbc0/docs`;
 
 export const projects: Project[] = [
   {
@@ -123,6 +133,123 @@ export const projects: Project[] = [
       { label: "Limitations", url: `${energyDocs}/LIMITATIONS.md` },
       { label: "Original project case study", url: `${energyDocs}/PORTFOLIO_CASE_STUDY.md` },
       { label: "UCI dataset and attribution", url: "https://archive.ics.uci.edu/dataset/851/steel+industry+energy+consumption" },
+    ],
+  },
+  {
+    slug: "creditrisk-ai",
+    name: "CreditRisk AI",
+    title: "Explainable Credit Risk Modeling & Model Validation",
+    category: "Banking · Credit Risk · Financial Analytics",
+    seoTitle: "CreditRisk AI | Banking Credit Risk & Model Validation",
+    summary: "An explainable historical banking risk analytics platform combining statistical default modeling, probability calibration, model validation, and hypothetical Monte Carlo credit-loss simulation.",
+    image: "/images/creditrisk-overview.jpg",
+    imageAlt: "Actual CreditRisk AI dashboard showing the historical credit-card cohort, default prevalence, and model-validation workflow",
+    tags: ["Python", "scikit-learn", "Credit risk", "Monte Carlo", "Streamlit"],
+    highlights: ["30,000 historical customer records", "Paired bootstrap and calibration uncertainty", "Hypothetical dependence-aware portfolio losses"],
+    github: creditRisk,
+    live: "https://creditrisk-ai-asquvlbgrsfevfur938zrk.streamlit.app/",
+    sections: [
+      {
+        title: "The banking analytics question",
+        paragraphs: ["How well do historical repayment patterns support next-month default probability estimates, and how should an analyst interpret their uncertainty? CreditRisk AI connects interpretable baselines, nonlinear models, probability diagnostics, and hypothetical loss scenarios in one reviewable platform.", "The work demonstrates methods relevant to quantitative risk analysis using public historical data. It provides analytical evidence and explicit limitations rather than real-customer lending decisions."],
+      },
+      {
+        title: "Historical data and a precisely defined outcome",
+        paragraphs: ["The UCI Default of Credit Card Clients dataset contains 30,000 Taiwanese customer records with April–September 2005 repayment history, 23 predictors, and 6,636 next-month payment default events: an observed rate of 22.12%. Monetary source values are in New Taiwan dollars (NTD).", "Attribution: Yeh, I. (2009), UCI Machine Learning Repository, DOI 10.24432/C55S3H, CC BY 4.0. Identifiers are excluded from modeling and public outputs; undocumented source codes remain explicitly labeled. This next-month outcome is different from a regulatory one-year default probability."],
+      },
+      {
+        title: "Statistical baselines and controlled model development",
+        paragraphs: ["Unpenalized logistic regression supplies an interpretable benchmark. L1 and L2 regularization control coefficient complexity, while histogram gradient boosting tests nonlinear predictive relationships. Training-only preprocessing and three-fold cross-validation tune limited candidate grids.", "A frozen, seed-42 stratified customer split separates training (15,000), validation (4,500), calibration (4,500), and test (6,000). Validation selects features and the model using probability scores and a documented simplicity preference. The chosen boosting model uses 150 iterations, learning rate 0.05, seven leaves, and L2 regularization 10.", "The calibration partition separately compares no mapping, sigmoid, and isotonic calibration using fit/selection halves. No additional recalibration wins that comparison, so the original predicted probabilities are retained. Test outcomes select neither the model nor its calibration."],
+      },
+      {
+        title: "Preserved historical model results",
+        paragraphs: ["These Version 1 results describe the original 6,000-customer random holdout after development choices were frozen. ROC-AUC measures discrimination rather than classification accuracy; average precision summarizes the precision–recall ranking. Lower Brier score and log loss indicate better probability scores.", "Boosting was selected using validation evidence before the original test audit. Version 2 preserves these fitted-model results. This historical random holdout provides no prospective, external, or out-of-time banking validation."],
+        table: {
+          caption: "Original V1 historical test · 6,000 customers. Average precision is not trapezoidal PR area.",
+          columns: ["Model", "ROC-AUC", "Average precision", "Brier score ↓", "Log loss ↓"],
+          rows: [
+            ["Logistic regression", "0.7675", "0.5314", "0.13785", "0.43909"],
+            ["L2 logistic regression", "0.7673", "0.5346", "0.13742", "0.43805"],
+            ["L1 logistic regression", "0.7679", "0.5334", "0.13747", "0.43821"],
+            ["Histogram gradient boosting", "0.7804", "0.5549", "0.13499", "0.42919"],
+          ],
+        },
+      },
+      {
+        title: "Discrimination is different from calibration",
+        paragraphs: ["Discrimination asks whether people who default tend to receive higher scores. Calibration asks whether predicted probabilities agree with observed event frequencies. A model can rank well while giving unreliable probabilities.", "The selected model's joint calibration intercept is −0.0141 and slope is 0.9845. Version 2 uses 1,000 ordinary customer bootstrap replicates, allowing event prevalence to vary; the approximate slope interval is [0.9240, 1.0459]. These conditional overall diagnostics do not establish exact or subgroup calibration, and the original no-additional-calibration decision remains unchanged."],
+        visual: {
+          src: "/images/creditrisk-calibration.jpg",
+          alt: "Actual CreditRisk AI probability calibration screen with reliability diagnostics and the selected no-additional-calibration method",
+          caption: "Authentic application screenshot: historical reliability diagnostics. The independently selected method applies no additional recalibration; V2 adds retrospective uncertainty around the same predictions.",
+        },
+      },
+      {
+        title: "Retrospective paired comparisons and uncertainty",
+        paragraphs: ["Version 2 resamples the same stratified customer indices for both fitted models in each of 1,000 paired bootstrap replicates. The differences below are boosting minus L2 logistic regression. Positive ROC-AUC and negative probability-score differences favor boosting on this historical sample.", "The V1 test had already been inspected when V2 was developed. These are retrospective, pointwise 95% percentile intervals conditional on frozen models and observed class counts, with no multiplicity adjustment. They omit training and model-selection uncertainty and do not guarantee superiority in a new banking population. The KS difference interval includes zero, so the analysis does not distinguish every discrimination metric."],
+        table: {
+          caption: "Retrospective boosting minus L2 · same 6,000 historical customers · 1,000 paired bootstrap replicates.",
+          columns: ["Metric", "Difference", "95% interval"],
+          rows: [
+            ["ROC-AUC", "+0.013040", "[0.006656, 0.019037]"],
+            ["Brier score", "−0.002436", "[−0.003512, −0.001375]"],
+            ["Log loss", "−0.008860", "[−0.012153, −0.005617]"],
+            ["KS", "+0.008589", "[−0.002694, 0.019102]"],
+          ],
+        },
+        visual: {
+          src: "/images/creditrisk-paired-comparison.jpg",
+          alt: "Actual CreditRisk AI V2 paired model-comparison screen with bootstrap differences and conditional intervals",
+          caption: "Authentic V2 application screenshot: paired bootstrap model comparison. All additional original-test analyses are retrospective, with frozen model choices.",
+        },
+      },
+      {
+        title: "Explanations, subgroup diagnostics, and stability",
+        paragraphs: ["Logistic coefficients and odds ratios explain their own transformed model scale. Boosting permutation importance on validation ranks maximum positive repayment delay and September repayment status strongly. Correlated predictors limit attribution: these are predictive associations, not causal effects.", "Subgroup diagnostics report counts, event denominators, uncertainty, and availability rather than treating sparse groups as precise evidence. Historical disparities alone do not establish discrimination, and metric parity does not certify fairness.", "A separate development-only experiment refits L2 logistic regression on 100 training resamples with fixed category references and evaluates the existing validation observations. This measures training sensitivity, without creating new validation data or estimating the selected boosting model's refit uncertainty."],
+      },
+      {
+        title: "Hypothetical Monte Carlo credit-loss simulation",
+        paragraphs: ["Version 2 constructs 1,000 synthetic accounts from an anonymous, rounded probability histogram and simulates 5,000 portfolios. Baseline exposure at default (EAD) is assumed to be 100,000 NTD per account; loss given default (LGD) is assumed to be 45%. These are scenario inputs rather than measured exposures or recoveries.", "Independent defaults are compared with a Gaussian common-factor scenario using assumed latent correlation 0.15. Identical marginal probabilities, EAD, and LGD imply the same analytical expected loss: 9,933,705 NTD. Dependence increases modeled tail loss under these assumptions; small differences between simulated means reflect Monte Carlo sampling.", "VaR95 is the empirical 95th loss percentile. ES95 averages the worst 5% of simulated loss probability mass, accounting for discreteness and ties. Finite simulation and rounded portfolio probabilities introduce approximation; these values are simulated losses rather than observed bank losses or regulatory capital."],
+        table: {
+          caption: "Hypothetical baseline · 1,000 synthetic accounts · 5,000 simulated portfolios · amounts in million NTD.",
+          columns: ["Default assumption", "Analytical expected loss", "VaR95", "ES95"],
+          rows: [
+            ["Independent · ρ = 0", "9.9337", "10.8000", "11.0160"],
+            ["Common factor · assumed ρ = 0.15", "9.9337", "17.6850", "20.1152"],
+          ],
+        },
+        visual: {
+          src: "/images/creditrisk-risk-simulation.jpg",
+          alt: "Actual CreditRisk AI V2 loss-simulation dashboard comparing independent and assumed common-factor portfolio losses",
+          caption: "Authentic V2 application screenshot: hypothetical Monte Carlo portfolio losses. EAD, LGD, stress, and latent dependence are assumptions; expected loss is unchanged when marginal loss inputs stay fixed.",
+        },
+      },
+      {
+        title: "Illustrative governance with evidence and follow-up",
+        paragraphs: ["Ten educational criteria connect frozen diagnostics, explicitly assumed tolerances, review status, and follow-up. A value within an illustrative tolerance is not model approval. For example, changing the assumed ROC-AUC floor from 0.75 to 0.80 flags the same historical 0.7804 estimate for review without changing any model or prediction.", "The appropriate next steps require governed temporal or external cohorts, a lender-specific outcome definition, measured exposures and recoveries, and institutional review. The project demonstrates transparent model validation practices without claiming official bank acceptance criteria or regulatory compliance."],
+      },
+      {
+        title: "An auditable analytical application",
+        paragraphs: ["Eight Streamlit sections connect cohort exploration, model evidence, validation, calibration, explanations, hypothetical credit-loss scenarios, and governance. Lightweight aggregate artifacts serve the dashboard without downloading raw customer data or fitting models at startup; the app accepts no real borrower records.", "Python, pandas, NumPy, SciPy, scikit-learn, Plotly, and Streamlit support the pipeline and interface. Versioned artifacts, source/split hashes, reproducible seeds, pytest checks, and Ruff preserve the distinction between historical evidence, retrospective inference, and hypothetical simulation."],
+      },
+    ],
+    results: [
+      { value: "30,000", label: "Historical customer records", note: "Taiwan 2005; 6,636 next-month payment defaults (22.12%)." },
+      { value: "0.7804", label: "Original boosting ROC-AUC", note: "Historical 6,000-customer random holdout; not classification accuracy." },
+      { value: "11.02 → 20.12m", label: "Hypothetical ES95 · NTD", note: "Independent to assumed common-factor defaults; analytical expected loss stays 9.93m NTD." },
+    ],
+    architecture: ["UCI source audit and identifier-safe feature pipeline", "Training-only preprocessing/CV and frozen development selection", "Independent calibration assessment and original historical test audit", "Retrospective paired bootstrap, calibration uncertainty, and subgroup diagnostics", "Development-only logistic resampling and hypothetical Monte Carlo portfolio losses", "Versioned aggregate evidence and eight-section Streamlit/Plotly dashboard"],
+    limitations: ["Historical Taiwan 2005 records do not validate present-day Finnish or European borrowers; no genuine out-of-time or external cohort is available.", "The outcome is next-month payment default, not a regulatory one-year probability of default.", "Every additional V2 analysis of the inspected V1 test is retrospective. Conditional bootstrap intervals omit training/selection uncertainty and rely on unproven customer independence.", "Predictive explanations are not causal; sparse subgroup evidence and exploratory multiple comparisons limit responsible-use conclusions.", "Synthetic accounts, EAD, LGD, latent dependence, and stress are assumptions. Simulated VaR/ES are not observed losses, regulatory capital, or IFRS 9 provisioning.", "Educational governance tolerances do not approve a model. The application makes no real-customer lending decisions and claims no bank endorsement or regulatory compliance."],
+    sources: [
+      { label: "Verified V2 results", url: `${creditDocs}/V2_RESULTS.md` },
+      { label: "Paired model comparison", url: `${creditDocs}/V2_MODEL_COMPARISON.md` },
+      { label: "Calibration uncertainty", url: `${creditDocs}/V2_CALIBRATION_UNCERTAINTY.md` },
+      { label: "Hypothetical risk simulation", url: `${creditDocs}/V2_RISK_SIMULATION.md` },
+      { label: "Illustrative model governance", url: `${creditDocs}/V2_MODEL_GOVERNANCE.md` },
+      { label: "Model card and intended use", url: `${creditDocs}/MODEL_CARD.md` },
+      { label: "Limitations", url: `${creditDocs}/LIMITATIONS.md` },
+      { label: "Original project case study", url: `${creditDocs}/PORTFOLIO_CASE_STUDY.md` },
+      { label: "UCI dataset and attribution", url: "https://doi.org/10.24432/C55S3H" },
     ],
   },
 ];

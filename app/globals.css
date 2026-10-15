@@ -430,6 +430,11 @@ svg {
   grid-template-columns: 1fr 1fr;
   gap: 32px;
 }
+.project-grid > .project-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  width: calc((100% - 32px) / 2);
+  justify-self: center;
+}
 .project-card {
   background: white;
   border: 1px solid var(--line);
@@ -962,6 +967,85 @@ svg {
 .case-sidebar nav a:hover {
   color: var(--teal);
 }
+.case-content {
+  min-width: 0;
+}
+.case-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-top: 25px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+.case-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.case-table caption {
+  padding: 15px 18px;
+  text-align: left;
+  color: var(--muted);
+  font-size: 11px;
+  background: var(--paper);
+}
+.case-table th,
+.case-table td {
+  padding: 13px 15px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+}
+.case-table thead th {
+  color: var(--navy);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.case-table tbody th {
+  color: var(--navy);
+  font-weight: 500;
+  min-width: 130px;
+}
+.case-table td {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 95px;
+}
+.case-detail-visual {
+  margin: 28px 0 0;
+}
+.case-detail-visual > a {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.case-detail-image {
+  position: relative;
+  display: block;
+  aspect-ratio: 1.44;
+  background: var(--paper);
+}
+.case-detail-image img {
+  object-fit: contain;
+}
+.case-image-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding: 12px 16px;
+  font-size: 12px;
+  color: var(--teal-dark);
+}
+.case-detail-visual figcaption {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--muted);
+}
 .case-section {
   padding-bottom: 46px;
   margin-bottom: 36px;
@@ -1247,6 +1331,9 @@ svg {
   .project-grid {
     gap: 20px;
   }
+  .project-grid > .project-card:last-child:nth-child(odd) {
+    width: calc((100% - 20px) / 2);
+  }
   .project-copy h3 {
     font-size: 20px;
     min-height: 105px;
@@ -1510,6 +1597,9 @@ svg {
   .project-grid {
     grid-template-columns: 1fr;
     gap: 27px;
+  }
+  .project-grid > .project-card:last-child:nth-child(odd) {
+    width: 100%;
   }
   .project-preview {
     aspect-ratio: 1.5;

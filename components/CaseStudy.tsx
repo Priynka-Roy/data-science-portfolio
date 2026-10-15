@@ -16,7 +16,7 @@ export function CaseStudy({ project }: { project: Project }) {
           <span>{project.name}</span>
         </nav>
         <header className="case-header">
-          <p className="eyebrow">Independent industrial data science project</p>
+          <p className="eyebrow">{project.category ?? "Independent industrial data science project"}</p>
           <h1>
             {project.name}
             <span>{project.title}</span>
@@ -85,7 +85,7 @@ export function CaseStudy({ project }: { project: Project }) {
                 key={section.title}
                 className="case-section"
               >
-                <p className="eyebrow">0{index + 1}</p>
+                <p className="eyebrow">{String(index + 1).padStart(2, "0")}</p>
                 <h2>{section.title}</h2>
                 {section.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
@@ -96,6 +96,62 @@ export function CaseStudy({ project }: { project: Project }) {
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
+                )}
+                {section.table && (
+                  <div
+                    className="case-table-scroll"
+                    role="region"
+                    aria-label={section.table.caption}
+                    tabIndex={0}
+                  >
+                    <table className="case-table">
+                      <caption>{section.table.caption}</caption>
+                      <thead>
+                        <tr>
+                          {section.table.columns.map((column) => (
+                            <th key={column} scope="col">{column}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row) => (
+                          <tr key={row[0]}>
+                            {row.map((cell, cellIndex) =>
+                              cellIndex === 0 ? (
+                                <th key={cellIndex} scope="row">{cell}</th>
+                              ) : (
+                                <td key={cellIndex}>{cell}</td>
+                              ),
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+                {section.visual && (
+                  <figure className="case-detail-visual">
+                    <a
+                      href={section.visual.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open full-size image: ${section.visual.alt} (opens in a new tab)`}
+                    >
+                      <span className="case-detail-image">
+                        <Image
+                          src={section.visual.src}
+                          alt={section.visual.alt}
+                          fill
+                          sizes="(max-width: 700px) 100vw, (max-width: 1100px) 70vw, 830px"
+                        />
+                      </span>
+                      <span className="case-image-action">
+                        View full-size screenshot
+                        <ArrowUpRight size={14} aria-hidden="true" />
+                      </span>
+                    </a>
+                    <figcaption>{section.visual.caption}</figcaption>
+                  </figure>
                 )}
               </section>
             ))}
@@ -130,7 +186,7 @@ export function CaseStudy({ project }: { project: Project }) {
               <ol className="architecture-list">
                 {project.architecture.map((stage, index) => (
                   <li key={stage}>
-                    <span>0{index + 1}</span>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
                     {stage}
                   </li>
                 ))}
