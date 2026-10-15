@@ -4,14 +4,15 @@
 
 A professional portfolio for Priynka Roy, an MSc Mathematics and Statistics student specializing in Statistics at the University of Turku, Finland.
 
-The website presents statistical research and two completed industrial data science projects with their current V2 evidence, methods, and limitations.
+The website presents statistical research and three completed industrial and financial data science projects with their current V2 evidence, methods, and limitations.
 
 ## Featured applications
 
 - [IndustrialGuard AI — live application](https://industrialguard-predictive-maintenance-fm5zvs3pfvs.streamlit.app/) · [source](https://github.com/Priynka-Roy/industrialguard-explainable-predictive-maintenance)
 - [EnerTwin AI — live application](https://enertwin-industrial-energy-digital-twin-a2rgv4nwanli6udcl9egvr.streamlit.app/) · [source](https://github.com/Priynka-Roy/enertwin-industrial-energy-digital-twin)
+- [CreditRisk AI — live application](https://creditrisk-ai-asquvlbgrsfevfur938zrk.streamlit.app/) · [source](https://github.com/Priynka-Roy/creditrisk-ai-explainable-credit-risk) · [case study](https://data-science-portfolio-olive.vercel.app/projects/creditrisk-ai)
 
-IndustrialGuard provides historical equipment condition monitoring; anomaly evidence does not establish reliable failure forecasting. EnerTwin uses hypothetical workloads, tariffs, and operating constraints; modeled costs are not realized factory savings.
+IndustrialGuard provides historical equipment condition monitoring; anomaly evidence does not establish reliable failure forecasting. EnerTwin uses hypothetical workloads, tariffs, and operating constraints; modeled costs are not realized factory savings. CreditRisk uses historical Taiwan data; V2 comparisons are retrospective and simulated credit losses depend on hypothetical assumptions. See `docs/CREDITRISK_SOURCES.md` for the pinned source revision.
 
 ## Run locally
 
