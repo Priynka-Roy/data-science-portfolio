@@ -32,6 +32,10 @@ const energyDocs = `${enerTwin}/blob/main/docs`;
 const creditRisk = "https://github.com/Priynka-Roy/creditrisk-ai-explainable-credit-risk";
 const creditDocs = `${creditRisk}/blob/c561888742e020a52448df28fffa6a1986bfbbc0/docs`;
 
+const actuaryLab = "https://github.com/Priynka-Roy/actuarylab-ai-insurance-pricing-risk";
+const actuaryRevision = "726b2474f9a93aee2e99a6bebca6148584618013";
+const actuaryDocs = `${actuaryLab}/blob/${actuaryRevision}/docs`;
+
 export const projects: Project[] = [
   {
     slug: "industrialguard-ai",
@@ -250,6 +254,143 @@ export const projects: Project[] = [
       { label: "Limitations", url: `${creditDocs}/LIMITATIONS.md` },
       { label: "Original project case study", url: `${creditDocs}/PORTFOLIO_CASE_STUDY.md` },
       { label: "UCI dataset and attribution", url: "https://doi.org/10.24432/C55S3H" },
+    ],
+  },
+  {
+    slug: "actuarylab-ai",
+    name: "ActuaryLab AI",
+    title: "Insurance Pricing, Claims Modeling & Portfolio Risk Platform",
+    category: "Insurance Analytics · Actuarial Statistics · Quantitative Risk",
+    seoTitle: "ActuaryLab AI | Insurance Pricing & Portfolio Risk",
+    summary: "An actuarial analytics platform combining exposure-aware claim frequency, Gamma severity regression, Tweedie pure-premium estimation, and Monte Carlo portfolio risk simulation using historical motor insurance data.",
+    image: "/images/actuarylab-overview.jpg",
+    imageAlt: "Actual ActuaryLab AI insurance overview showing the reconciled historical policy cohort, exposure-years, positive payments, and claims modeling workflow",
+    tags: ["Python", "Actuarial modeling", "GLM & Tweedie", "Monte Carlo", "Streamlit"],
+    highlights: ["668,896 reconciled historical policies", "Exposure-aware frequency, severity, and pure premium", "Transparent holdout weakness and hypothetical tail risk"],
+    github: actuaryLab,
+    live: "https://actuarylab-ai-insurance-pricing-risk-hr7wfi9w5xtdycwvvyjuxp.streamlit.app/",
+    sections: [
+      {
+        title: "From claim occurrence to portfolio risk",
+        paragraphs: ["Insurance pricing connects how often payments occur, how large they may be, and how much coverage a policy provides. ActuaryLab AI investigates those components separately, then brings them together as expected cost per exposure-year, hypothetical premiums, and simulated aggregate loss.", "The project demonstrates insurance analytics using public historical French motor third-party liability data. It helps explain model evidence and assumption sensitivity; its synthetic pricing examples are not commercial insurance quotes."],
+      },
+      {
+        title: "Historical sources and the reconciled population",
+        paragraphs: ["The OpenML freMTPL2freq (41214) and freMTPL2sev (41215) datasets originate from CASdatasets, attributed to C. Dutang and A. Charpentier (2018). The downloaded frequency source contains 678,013 policies, while the severity source contains 26,639 payment rows. Those original source populations are different from the primary economic modeling cohort.", "After reconciliation, the primary cohort contains 668,896 policies, 353,893.168 exposure-years, and 26,443 positive payments totaling 59,908,673.17 source monetary units (SMU). These are historical recorded amounts without currency conversion or inflation adjustment. The public application distributes aggregate summaries and synthetic profiles rather than raw policy records."],
+      },
+      {
+        title: "Reconciliation before modeling",
+        paragraphs: ["A policy-level audit identifies 195 unmatched payment rows, 255 exact repeated payment rows, and 9,117 policies with inconsistent declared claim counts. Repeated equal payments remain because no unique claim identifier can establish whether they are accidental duplicates. Payments are aggregated once per policy before a validated one-to-one join, preserving exposure denominators.", "The primary analysis excludes unresolved count/payment histories instead of interpreting unknown payment costs as zero. Ordinary zero-claim policies remain valid zeros. This does not recover missing claims: exclusion changes the population and may introduce selection bias. Large payments and exposures above one year remain uncapped in the primary analysis."],
+      },
+      {
+        title: "Exposure-aware statistical design",
+        paragraphs: ["A deterministic seed-42 policy hash assigns 401,433 policies to training, 133,582 to validation, and 133,881 to final holdout. Every payment inherits its parent policy's split, preventing payment rows from the same policy entering different partitions. Transformations are fitted on training only; validation selects models with no post-selection refit or test-based reselection.", "Frequency is the expected number of strictly positive linked payments per exposure-year, compatible with the positive-payment severity target. Annual pure premium = expected annual frequency × expected positive severity. For policy exposure e, expected policy claims cost = e × predicted annual frequency × predicted severity. Annualized pure premium and contract-period cost therefore have different units.", "The random historical holdout is internal retrospective evidence. The released fields do not support a reliable out-of-time assessment, and policy-ID separation cannot establish independence between unidentifiable repeat customers or renewals."],
+      },
+      {
+        title: "Frequency, severity, and pure-premium models",
+        paragraphs: ["Poisson log-link GLMs and regularized alternatives model annual positive-payment frequency using exposure weights, equivalent in the unpenalized objective to a count model with fixed log-exposure offset. Poisson histogram gradient boosting tests a nonlinear conditional mean. Dispersion and zero-count diagnostics investigate the Poisson assumption; a negative-binomial development diagnostic does not beat the selected boosting candidate.", "Gamma log-link regression models individual strictly positive payment severity, with all primary large losses retained. A training-only capped-payment refit is reported separately: improving a capped target does not establish better full-cost prediction.", "The two-part model multiplies compatible frequency and severity estimates. Direct Tweedie log-link regressions supply an alternative annual pure-premium model with fitted powers 1.3, 1.5, and 1.7. All premium candidates are compared at one common Tweedie evaluation power of 1.5, rather than mixing scoring scales."],
+        visual: {
+          src: "/images/actuarylab-frequency.jpg",
+          alt: "Actual ActuaryLab AI claim-frequency screen with exposure-aware Poisson and gradient boosting comparisons",
+          caption: "Authentic application screenshot: annual positive-payment frequency modeling. Exposure-adjusted scores compare conditional mean predictions; they do not certify a Poisson loss process.",
+        },
+      },
+      {
+        title: "Actual holdout evidence, separated by target",
+        paragraphs: ["Lower deviance is better within the same prediction target and scoring convention. Frequency, severity, and pure-premium deviances have different scales and must not be compared across targets. The selected models were chosen using validation before the final holdout audit.", "The selected Poisson gradient boosting frequency model improves the historical held-out exposure-weighted Poisson score relative to the unpenalized GLM. Gamma severity uses alpha 0.1; the best direct Tweedie candidate has fitted power 1.7 and alpha 0.1. Machine learning is not claimed to be best for every component."],
+        table: {
+          caption: "Frozen-model historical holdout · 133,881 policies and 5,238 positive payments. Premium scores share evaluation power 1.5.",
+          columns: ["Prediction target", "Candidate", "Holdout deviance ↓"],
+          rows: [
+            ["Annual payment frequency · Poisson", "Poisson GLM", "0.461383"],
+            ["Annual payment frequency · Poisson", "Poisson gradient boosting · selected", "0.449373"],
+            ["Positive payment severity · Gamma", "Gamma GLM · selected", "2.025686"],
+            ["Annual pure premium · Tweedie p = 1.5", "Two-part frequency × severity · selected", "80.463183"],
+            ["Annual pure premium · Tweedie p = 1.5", "Direct Tweedie · fitted p = 1.7", "86.392864"],
+          ],
+        },
+      },
+      {
+        title: "A visible calibration weakness: 15.49% underprediction",
+        paragraphs: ["The selected two-part model predicts 11,389,868.69 SMU in aggregate holdout claims against 13,477,614.76 SMU observed: 15.49% underprediction. Although it achieved the strongest selected pure-premium validation score, that comparison does not guarantee accurate aggregate pricing.", "The holdout observed-to-expected cost ratio is 1.1833. Heavy payments create substantial uncertainty: payments above the training 99th percentile contribute 35.23% of training paid cost. This weakness is preserved as a central finding rather than hidden behind a better model-comparison score."],
+      },
+      {
+        title: "Paired comparisons and conditional uncertainty",
+        paragraphs: ["The analysis uses 250 ordinary policy-cluster bootstrap resamples with paired policy indices for model comparisons. A policy's exposure, counts, and payments stay together. The selected boosting-minus-Poisson-GLM frequency deviance difference is −0.01201, with pointwise 95% percentile interval [−0.01495, −0.00936]. This supports a historical score difference under the specified resampling procedure.", "These intervals condition on frozen fitted models and the observed historical sample; they omit full training and selection uncertainty and do not guarantee future superiority. The observed holdout pure-premium interval is broad: [125.10, 316.69] SMU per exposure-year. The selected premium observed-to-expected interval [0.7809, 1.9784] illustrates how heavy tails limit precise calibration conclusions."],
+        table: {
+          caption: "Pointwise 95% policy-bootstrap intervals · 250 resamples · fixed fitted models. Differences use paired policies.",
+          columns: ["Diagnostic", "95% interval", "Interpretation"],
+          rows: [
+            ["Boosting minus Poisson GLM · frequency deviance", "[−0.01495, −0.00936]", "Negative difference favors boosting on this historical target."],
+            ["Observed holdout pure premium · SMU/exposure-year", "[125.10, 316.69]", "Descriptive cost uncertainty; not an individual prediction interval."],
+            ["Selected premium · observed / expected", "[0.7809, 1.9784]", "Wide conditional interval does not establish future calibration."],
+          ],
+        },
+      },
+      {
+        title: "Hypothetical pricing with explicit assumptions",
+        paragraphs: ["Synthetic profiles separate expected claims cost from an assumed charged premium. The annual illustration is (pure premium × (1 + risk loading) + fixed annual cost) / (1 − expense share − profit share). Expense and profit are shares of final premium; exposure scales annual amounts into contract-period amounts.", "The baseline assumes expense share 20%, profit share 5%, risk loading 5%, and zero fixed cost. For 1,000 one-year synthetic policies, assumed premium is 367,856.79 SMU. Holding that denominator fixed, simultaneous +20% frequency and severity multiply expected cost by 1.44 and increase the hypothetical expected loss ratio from 71.43% to 102.86%. Commercial earned premiums and expenses are absent, so this is an assumption-based adequacy scenario rather than measured profitability."],
+        visual: {
+          src: "/images/actuarylab-pricing.jpg",
+          alt: "Actual ActuaryLab AI pure-premium screen comparing two-part and direct Tweedie historical holdout model results",
+          caption: "Authentic application screenshot: two-part and direct Tweedie pure-premium evidence. Pricing examples elsewhere in the app use hypothetical loadings and are not insurance offers.",
+        },
+      },
+      {
+        title: "Monte Carlo portfolio losses and stress scenarios",
+        paragraphs: ["The baseline contains 1,000 synthetic one-year policies: 125 of each of eight model-derived profiles. A seeded simulation generates 10,000 portfolios using Poisson counts and assumed Gamma severities; alternatives investigate frequency, severity, portfolio composition, lognormal tails, and a mean-one shared frequency shock.", "The baseline analytical expected loss is 262,754.85 SMU; the simulated mean is 263,178.44 SMU, with mean Monte Carlo standard error 1,346.05 SMU. That numerical agreement concerns the assumed simulation model, not empirical tail validation. The simulator also reports loss standard deviation and illustrative loss ratios; future process variability is distinct from error in the simulated mean."],
+        table: {
+          caption: "Hypothetical model-based simulations · 1,000 synthetic policies · 10,000 portfolios · all loss amounts in SMU.",
+          columns: ["Assumed scenario", "Analytical expected loss", "VaR95", "ES95"],
+          rows: [
+            ["Baseline · independent Gamma", "262,754.85", "512,611.75", "611,360.58"],
+            ["Frequency +20%", "315,305.82", "581,382.03", "681,867.61"],
+            ["Severity +20%", "315,305.82", "615,134.10", "733,632.70"],
+            ["Combined +20% frequency and severity", "378,366.98", "697,658.44", "818,241.13"],
+            ["Alternative lognormal · same means", "262,754.85", "341,976.14", "367,810.71"],
+            ["Shared frequency shock · mean preserved", "262,754.85", "575,154.90", "702,798.17"],
+            ["Portfolio mix · younger profile weight 50%", "307,195.98", "583,399.50", "688,858.81"],
+          ],
+        },
+        visual: {
+          src: "/images/actuarylab-risk-simulation.jpg",
+          alt: "Actual ActuaryLab AI synthetic portfolio risk simulator comparing baseline losses and hypothetical frequency, severity, tail, and shared-shock scenarios",
+          caption: "Authentic application screenshot: assumed aggregate loss scenarios. These are simulated process losses, not observed insurer financial outcomes or regulatory capital estimates.",
+        },
+      },
+      {
+        title: "Tail interpretation depends on the assumed loss law",
+        paragraphs: ["VaR95 is the inverse empirical 95th loss percentile. ES95 averages exactly the worst 5% of simulated probability mass, including fractional boundary mass where needed. Finite Monte Carlo samples leave uncertainty in both, particularly at the reported 99% level with only 100 draws in the upper tail.", "Gamma and lognormal alternatives preserve conditional mean severity and analytical expected loss, yet their ES95 estimates differ: 611,360.58 versus 367,810.71 SMU. Different training-derived dispersion specifications produce this contrast; a lower simulated tail is not evidence of greater accuracy. A mean-preserving shared frequency shock instead raises ES95 to 702,798.17 SMU while expected loss stays fixed. These are assumption-sensitivity findings rather than Solvency II capital estimates."],
+      },
+      {
+        title: "Explainability, responsible pricing, and governance",
+        paragraphs: ["GLM rate relativities, feature diagnostics, and frequency × severity decomposition make model contributions reviewable. Exposure-adjusted group diagnostics show policy counts, payment counts, exposure, and sparse-group cautions. Predictive associations do not establish causal effects, and sparse ratios or aggregate calibration cannot certify fair subgroup pricing.", "Age and geographic variables may face legal or ethical pricing restrictions; predictive performance does not establish permission to use them. Historical French payment records do not validate contemporary Finnish insurance pricing. The project has no insurer sponsor or endorsement, makes no claim of professional actuarial credentials, and is not a certified commercial pricing model. Operational use would require contemporary independent data and actuarial, legal, and governance review."],
+      },
+      {
+        title: "A reproducible analytical application",
+        paragraphs: ["Eight Streamlit sections connect insurance overview, portfolio exploration, frequency, severity, pure premium, model validation, risk simulation, and governance. Guided cases connect the statistical evidence with interpretation. Compact aggregate JSON serves the application without raw-data downloads or model training at startup; bounded, cached simulations keep interactive experiments manageable.", "Python, pandas, NumPy, SciPy, scikit-learn, Plotly, and Streamlit support the pipeline and interface. Source hashes, a frozen evaluation protocol, versioned computed artifacts, pytest checks, and Ruff make the result reviewable. Internal checks and review perspectives are software and analytical evidence, not independent external actuarial validation."],
+      },
+    ],
+    results: [
+      { value: "668,896", label: "Reconciled historical policies", note: "From 678,013 source policies; unresolved payment histories excluded, with selection-bias risk." },
+      { value: "15.49%", label: "Aggregate holdout underprediction", note: "11.39m SMU predicted against 13.48m observed; selected two-part model." },
+      { value: "71.43 → 102.86%", label: "Hypothetical expected loss ratio", note: "Baseline to combined +20% frequency/severity; assumed premium held fixed." },
+    ],
+    architecture: ["Versioned OpenML ingestion and policy/payment reconciliation audit", "Policy-level splitting, claim inheritance, and training-only transformations", "Exposure-weighted Poisson, Gamma severity, and common-score Tweedie comparisons", "Frozen-model holdout calibration, paired policy bootstrap, and tail diagnostics", "Synthetic loaded pricing and bounded compound-loss Monte Carlo scenarios", "Integrity-checked aggregate artifacts and eight-section Streamlit/Plotly application"],
+    limitations: ["Historical French MTPL records and payment conventions do not establish contemporary Finnish or Nordic pricing validity; no reliable out-of-time or external cohort is available.", "The 668,896-policy reconciled cohort differs from the 678,013-policy source. Exclusion of 9,117 unresolved payment histories may introduce selection bias and cannot recover missing costs.", "The selected two-part model underpredicts aggregate holdout claims by 15.49%. Better deviance does not establish accurate aggregate pricing or future profitability.", "Conditional policy-bootstrap intervals omit full training and selection uncertainty; sparse groups, unidentifiable repeat policyholders, and heavy payments limit inference.", "Hypothetical premiums, tail distributions, composition, and shared shocks are assumptions. Simulated VaR and Expected Shortfall are not observed company losses, catastrophe validation, or Solvency II capital.", "Coverage, inflation, reliable development histories, actual commercial premiums, and expenses are unavailable. Associations do not establish causality, lawful rating factors, or fair pricing.", "This educational project claims no insurer partnership, operational tariff approval, professional actuarial certification, or independent external validation."],
+    sources: [
+      { label: "Verified computed results", url: `${actuaryLab}/blob/${actuaryRevision}/reports/results.json` },
+      { label: "Data provenance and attribution", url: `${actuaryDocs}/DATA_CARD.md` },
+      { label: "Policy/payment reconciliation", url: `${actuaryDocs}/DATA_RECONCILIATION.md` },
+      { label: "Frozen methodology", url: `${actuaryDocs}/METHODOLOGY.md` },
+      { label: "Model validation and scoring", url: `${actuaryDocs}/MODEL_VALIDATION.md` },
+      { label: "Conditional statistical uncertainty", url: `${actuaryDocs}/STATISTICAL_UNCERTAINTY.md` },
+      { label: "Hypothetical pricing", url: `${actuaryDocs}/PRICING_SCENARIOS.md` },
+      { label: "Risk simulation assumptions", url: `${actuaryDocs}/RISK_SIMULATION.md` },
+      { label: "Responsible pricing and model card", url: `${actuaryDocs}/MODEL_CARD.md` },
+      { label: "Project limitations", url: `${actuaryDocs}/LIMITATIONS.md` },
+      { label: "OpenML frequency dataset · 41214", url: "https://www.openml.org/d/41214" },
+      { label: "OpenML severity dataset · 41215", url: "https://www.openml.org/d/41215" },
     ],
   },
 ];

@@ -86,7 +86,7 @@ export default function Home() {
         <div className="container">
           <span>A statistical foundation.</span>
           <span>A practical approach.</span>
-          <span>Three applied data science projects.</span>
+          <span>Four applied data science projects.</span>
         </div>
       </div>
       <section
@@ -137,9 +137,9 @@ export default function Home() {
               </h2>
             </div>
             <p className="heading-aside">
-              Three independent projects exploring equipment health, energy
-              decisions, and credit risk. Real data, transparent evaluation, and
-              working applications.
+              Four independent projects exploring equipment health, energy
+              decisions, credit risk, and insurance pricing. Real data, transparent
+              evaluation, and working applications.
             </p>
           </div>
           <div className="project-grid">

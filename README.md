@@ -4,7 +4,7 @@
 
 A professional portfolio for Priynka Roy, an MSc Mathematics and Statistics student specializing in Statistics at the University of Turku, Finland.
 
-The website presents statistical research and three completed industrial and financial data science projects with their current V2 evidence, methods, and limitations.
+The website presents statistical research and four completed industrial, financial and insurance data science projects with verified results, methods, and limitations.
 
 ## Featured applications
 
@@ -12,7 +12,9 @@ The website presents statistical research and three completed industrial and fin
 - [EnerTwin AI — live application](https://enertwin-industrial-energy-digital-twin-a2rgv4nwanli6udcl9egvr.streamlit.app/) · [source](https://github.com/Priynka-Roy/enertwin-industrial-energy-digital-twin)
 - [CreditRisk AI — live application](https://creditrisk-ai-asquvlbgrsfevfur938zrk.streamlit.app/) · [source](https://github.com/Priynka-Roy/creditrisk-ai-explainable-credit-risk) · [case study](https://data-science-portfolio-olive.vercel.app/projects/creditrisk-ai)
 
-IndustrialGuard provides historical equipment condition monitoring; anomaly evidence does not establish reliable failure forecasting. EnerTwin uses hypothetical workloads, tariffs, and operating constraints; modeled costs are not realized factory savings. CreditRisk uses historical Taiwan data; V2 comparisons are retrospective and simulated credit losses depend on hypothetical assumptions. See `docs/CREDITRISK_SOURCES.md` for the pinned source revision.
+- [ActuaryLab AI — live application](https://actuarylab-ai-insurance-pricing-risk-hr7wfi9w5xtdycwvvyjuxp.streamlit.app/) · [source](https://github.com/Priynka-Roy/actuarylab-ai-insurance-pricing-risk) · [case study](https://data-science-portfolio-olive.vercel.app/projects/actuarylab-ai)
+
+IndustrialGuard provides historical equipment condition monitoring; anomaly evidence does not establish reliable failure forecasting. EnerTwin uses hypothetical workloads, tariffs, and operating constraints; modeled costs are not realized factory savings. CreditRisk uses historical Taiwan data; V2 comparisons are retrospective and simulated credit losses depend on hypothetical assumptions. ActuaryLab uses reconciled historical French motor insurance data, discloses aggregate holdout cost underprediction and uses hypothetical pricing/risk assumptions. See `docs/ACTUARYLAB_SOURCES.md` for its verified V1 evidence. See `docs/CREDITRISK_SOURCES.md` for the pinned source revision.
 
 ## Run locally
 
