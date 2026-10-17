@@ -4,11 +4,11 @@ Reviewed on 16 October 2026. This update integrates the completed Version 1 proj
 
 ## Frozen source snapshot
 
-Repository: [Priynka-Roy/actuarylab-ai-insurance-pricing-risk](https://github.com/Priynka-Roy/actuarylab-ai-insurance-pricing-risk).
+Repository: [Priynka-Roy/Credit-Risk-Analytics-and-Model-Validation](https://github.com/Priynka-Roy/Insuarance-and-Actuarial-Analytics).
 
 Current remote `main` was resolved through GitHub API to **`726b2474f9a93aee2e99a6bebca6148584618013`**. All 17 requested source files below were fetched through the API at that exact revision and read before writing the portfolio entry. Case-study evidence links use this immutable revision.
 
-The authoritative computed artifact is [reports/results.json](https://github.com/Priynka-Roy/actuarylab-ai-insurance-pricing-risk/blob/726b2474f9a93aee2e99a6bebca6148584618013/reports/results.json). Documentation was checked against it, rather than choosing favorable descriptions.
+The authoritative computed artifact is [reports/results.json](https://github.com/Priynka-Roy/Insuarance-and-Actuarial-Analytics/blob/726b2474f9a93aee2e99a6bebca6148584618013/reports/results.json). Documentation was checked against it, rather than choosing favorable descriptions.
 
 Files reviewed:
 

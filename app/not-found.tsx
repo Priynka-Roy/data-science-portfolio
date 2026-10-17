@@ -10,8 +10,8 @@ export default function NotFound() {
         to familiar ground.
       </h1>
       <p>
-        This page could not be found. Explore the portfolio and its four
-        industrial and financial data science projects.
+        This page could not be found. Explore the portfolio and its
+        data science and analytics projects.
       </p>
       <Link href="/" className="button button-primary">
         <ArrowLeft size={17} aria-hidden="true" />

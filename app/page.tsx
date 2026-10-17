@@ -16,7 +16,7 @@ import {
   research,
 } from "@/content/profile";
 import { projects } from "@/content/projects";
-import { CVLink, ExternalLink, SectionHeading } from "@/components/Elements";
+import { ExternalLink, SectionHeading } from "@/components/Elements";
 import { ProjectCard } from "@/components/ProjectCard";
 
 export default function Home() {
@@ -30,18 +30,16 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow hero-eyebrow">
             <span className="status-dot" aria-hidden="true" />
-            MSc Statistics · University of Turku
+            Statistics in practice
           </p>
           <h1 id="hero-title">
             Priynka Roy
             <span className="hero-statement">
-              Finding the story.
-              <br />
-              Understanding the data.
+              Turning data into meaningful insights.
             </span>
           </h1>
           <p className="hero-disciplines">
-            Statistics / Machine learning / Industrial & financial analytics
+            {profile.headline}
           </p>
           <p className="hero-intro">{profile.intro}</p>
           <div className="hero-actions">
@@ -49,17 +47,13 @@ export default function Home() {
               View my projects
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
-            <CVLink />
           </div>
           <div className="hero-social">
             <ExternalLink href={profile.github}>GitHub</ExternalLink>
             {profile.linkedin && (
               <ExternalLink href={profile.linkedin}>LinkedIn</ExternalLink>
             )}
-            <span className="hero-location">
-              <MapPin size={15} aria-hidden="true" />
-              {profile.location}
-            </span>
+            <ExternalLink href={profile.scholar}>Google Scholar</ExternalLink>
           </div>
         </div>
         <div className="hero-visual">
@@ -75,20 +69,12 @@ export default function Home() {
           </div>
           <div className="portrait-caption">
             <span>Curiosity, grounded in statistics.</span>
-            <span className="caption-location">Turku, Finland</span>
           </div>
           <span className="portrait-detail" aria-hidden="true">
             PR / 01
           </span>
         </div>
       </section>
-      <div className="intro-strip">
-        <div className="container">
-          <span>A statistical foundation.</span>
-          <span>A practical approach.</span>
-          <span>Four applied data science projects.</span>
-        </div>
-      </div>
       <section
         id="about"
         className="section container about-section"
@@ -104,19 +90,15 @@ export default function Home() {
             to useful decisions.
           </h2>
           <p className="about-note">
-            MSc student. Researcher.
+            Statistical thinking.
             <br />
-            An analytical mind at work.
+            Practical problem-solving.
           </p>
         </div>
         <div className="about-copy">
           {profile.about.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-          <Link href="#research" className="text-link">
-            Explore my research
-            <ArrowRight size={16} aria-hidden="true" />
-          </Link>
         </div>
       </section>
       <section
@@ -131,15 +113,15 @@ export default function Home() {
                 <span>02</span>Selected work
               </p>
               <h2 id="projects-title">
-                Statistics meets
+                Analytical thinking.
                 <br />
-                industrial & financial challenges.
+                Practical applications.
               </h2>
             </div>
             <p className="heading-aside">
-              Four independent projects exploring equipment health, energy
-              decisions, credit risk, and insurance pricing. Real data, transparent
-              evaluation, and working applications.
+              Selected projects demonstrating how statistical modeling, machine learning,
+              and data-driven problem-solving can address practical challenges. Each
+              project combines real-world data, transparent evaluation, and an interactive application.
             </p>
           </div>
           <div className="project-grid">
@@ -195,13 +177,11 @@ export default function Home() {
               <span>04</span>Education
             </p>
             <h2 id="education-title">
-              A foundation
-              <br />
-              in Statistics.
+              A foundation in Statistics and Data Analytics.
             </h2>
             <p className="section-intro">
-              Academic training in quantitative thinking, inference, and
-              modeling.
+              Academic training in statistical inference, data analysis,
+              quantitative modeling, and research methods.
             </p>
           </div>
           <div>
@@ -282,15 +262,11 @@ export default function Home() {
           </article>
           <article>
             <p className="eyebrow">Ongoing master’s research</p>
-            <h3>Privacy and longitudinal statistical data</h3>
+            <h3>{research.mastersTitle}</h3>
+            <p className="research-period">{research.mastersPeriod} · {research.mastersStatus}</p>
             <p>{research.mastersDescription}</p>
           </article>
         </div>
-        {profile.scholar && (
-          <ExternalLink href={profile.scholar}>
-            Google Scholar profile
-          </ExternalLink>
-        )}
       </section>
       <section
         id="contact"
@@ -308,8 +284,9 @@ export default function Home() {
               about what’s next.
             </h2>
             <p>
-              Interested in opportunities in data science, statistical
-              analytics, machine learning, and industrial analytics.
+              I am interested in opportunities in data science, statistical analysis,
+              machine learning, and quantitative analytics. I welcome conversations
+              about professional opportunities, research, and collaborative projects.
             </p>
             <a className="contact-email" href={`mailto:${profile.email}`}>
               {profile.email}
@@ -326,7 +303,6 @@ export default function Home() {
               Send an email
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-            <CVLink className="button button-on-dark" />
             <div>
               <ExternalLink href={profile.github}>GitHub</ExternalLink>
               {profile.linkedin && (

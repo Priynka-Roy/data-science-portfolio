@@ -9,7 +9,7 @@ const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl), alternates: { canonical: siteUrl } } : {}),
-  openGraph: { type: "website", locale: "en_GB", siteName: "Priynka Roy", title: "Priynka Roy | Statistics & Data Science", description: "Statistical research, industrial machine learning, credit risk, and insurance analytics projects by Priynka Roy.", ...(siteUrl ? { url: siteUrl } : {}) },
+  openGraph: { type: "website", locale: "en_GB", siteName: "Priynka Roy", title: "Priynka Roy | Statistics & Data Science", description: "Statistical modeling, machine learning, and data analytics by Priynka Roy. Explore practical applications, Python and R skills, transparent evaluation, and research.", ...(siteUrl ? { url: siteUrl } : {}) },
   twitter: { card: "summary_large_image" },
   title: {
     default:
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Priynka Roy",
   },
   description:
-    "Portfolio of Priynka Roy, an MSc Statistics student at the University of Turku, featuring industrial machine learning, time-series forecasting, energy optimization, credit risk modeling, insurance pricing, and statistical research.",
+    "Priynka Roy’s portfolio in statistics, data science, machine learning, and analytics. Explore statistical modeling, practical applications, Python and R skills, basic SQL, and quantitative research.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

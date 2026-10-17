@@ -3,7 +3,6 @@
 @import "@fontsource/inter/500.css";
 @import "@fontsource/inter/600.css";
 @import "@fontsource/inter/700.css";
-
 :root {
   --navy: #11243a;
   --teal: #087f7c;
@@ -257,11 +256,11 @@ svg {
 }
 .hero {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 90px;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 64px;
   align-items: center;
-  padding-block: 74px 78px;
-  min-height: 660px;
+  padding-block: 64px 60px;
+  min-height: 610px;
 }
 .hero-eyebrow {
   margin-bottom: 22px;
@@ -280,24 +279,24 @@ svg {
 }
 .hero-statement {
   display: block;
-  font-size: clamp(33px, 3.7vw, 48px);
+  font-size: clamp(28px, 2.5vw, 36px);
   line-height: 1.13;
   margin-top: 19px;
   font-weight: 500;
-  letter-spacing: -0.052em;
+  letter-spacing: -0.04em;
 }
 .hero-disciplines {
   margin-top: 25px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  font-size: 10px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 13px;
   font-weight: 700;
   color: var(--teal);
 }
 .hero-intro {
   font-size: 15px;
   line-height: 1.9;
-  max-width: 510px;
+  max-width: 650px;
   color: var(--muted);
   margin-top: 17px !important;
 }
@@ -311,30 +310,23 @@ svg {
   display: flex;
   align-items: center;
   gap: 22px;
-  margin-top: 22px;
+  flex-wrap: wrap;
+  margin-top: 18px;
 }
 .hero-social .text-link {
   color: var(--navy);
   font-size: 12px;
 }
-.hero-location {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  color: var(--muted);
-  margin-left: 4px;
-}
 .hero-visual {
   position: relative;
   margin-right: 7px;
-  max-width: 385px;
+  max-width: 350px;
   width: 100%;
   justify-self: end;
 }
 .portrait-frame {
   position: relative;
-  height: 450px;
+  height: 420px;
   overflow: hidden;
   border-radius: 100px 5px 5px 5px;
   background: #dad6ca;
@@ -355,11 +347,6 @@ svg {
   font-size: 10px;
   color: var(--navy);
 }
-.caption-location {
-  color: var(--muted);
-  font-size: 9px;
-  white-space: nowrap;
-}
 .portrait-detail {
   position: absolute;
   right: -30px;
@@ -369,25 +356,9 @@ svg {
   letter-spacing: 0.2em;
   color: var(--muted);
 }
-.intro-strip {
-  border-block: 1px solid var(--line);
-  background: var(--paper);
-}
-.intro-strip > .container {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding-block: 21px;
-  color: var(--muted);
-  font-size: 12px;
-}
-.intro-strip span + span::before {
-  content: "+";
-  color: var(--teal);
-  margin-right: 30px;
-  font-size: 16px;
-}
 .about-section {
+  border-top: 1px solid var(--line);
+  padding-top: 72px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 100px;
@@ -404,9 +375,6 @@ svg {
 .about-copy > p {
   font-size: 15px;
   color: var(--muted);
-}
-.about-copy > .text-link {
-  margin-top: 20px;
 }
 .heading-row {
   display: flex;
@@ -427,15 +395,13 @@ svg {
 }
 .project-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-.project-grid > .project-card:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-  width: calc((100% - 32px) / 2);
-  justify-self: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 .project-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   background: white;
   border: 1px solid var(--line);
   border-radius: 7px;
@@ -446,13 +412,14 @@ svg {
 }
 .project-preview {
   position: relative;
-  aspect-ratio: 1.58;
+  aspect-ratio: 16 / 9;
+  max-height: 240px;
   background: #e4ebef;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
 .project-preview > img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: top;
   transition: transform 0.4s;
 }
@@ -461,41 +428,45 @@ svg {
 }
 .preview-label {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
+  bottom: 10px;
+  right: 10px;
   display: flex;
   align-items: center;
   gap: 9px;
   background: var(--navy);
   color: white;
   border-radius: 3px;
-  padding: 7px 11px;
+  padding: 5px 8px;
   font-size: 10px;
 }
 .project-copy {
-  padding: 29px 29px 25px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px;
 }
 .project-copy .eyebrow {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  letter-spacing: 0.07em;
 }
 .project-copy h3 {
-  font-size: 25px;
-  letter-spacing: -0.035em;
+  font-size: 22px;
+  letter-spacing: -0.03em;
   line-height: 1.3;
-  min-height: 97px;
 }
 .project-copy > p:not(.eyebrow) {
   font-size: 13px;
-  line-height: 1.85;
+  line-height: 1.7;
   color: var(--muted);
-  margin-top: 15px;
+  margin-top: 12px;
 }
 .project-highlights {
   list-style: none;
   padding: 0;
   display: grid;
-  gap: 9px;
-  margin-top: 24px;
+  gap: 6px;
+  margin-top: 16px;
 }
 .project-highlights li {
   font-size: 12px;
@@ -532,15 +503,16 @@ svg {
   line-height: 1.3;
 }
 .project-actions {
+  padding-top: 18px;
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-top: 26px;
+  gap: 12px;
+  margin-top: auto;
   flex-wrap: wrap;
 }
 .project-actions .button {
   font-size: 11px;
-  min-height: 42px;
+  min-height: 44px;
   padding: 10px 13px;
 }
 .project-github {
@@ -563,7 +535,7 @@ svg {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px 48px;
+  gap: 32px;
 }
 .skill-group {
   padding-top: 21px;
@@ -577,6 +549,7 @@ svg {
 .skill-group h3 {
   margin-top: 13px;
   font-size: 18px;
+  line-height: 1.4;
   letter-spacing: -0.02em;
 }
 .skill-group ul {
@@ -588,9 +561,9 @@ svg {
   margin-top: 19px;
 }
 .skill-group li {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
-  line-height: 1.65;
+  line-height: 1.75;
 }
 .skill-group li:not(:last-child)::after {
   content: "/";
@@ -822,13 +795,6 @@ svg {
 .button-light:hover {
   background: #dfefed;
 }
-.button-on-dark {
-  border-color: #54697c;
-  color: white;
-}
-.button-on-dark:hover {
-  background: #20374f;
-}
 .contact-links > div {
   display: flex;
   justify-content: space-between;
@@ -914,6 +880,55 @@ svg {
 }
 .case-header .tags {
   margin-top: 24px;
+}
+.project-glance {
+  padding: 26px 30px;
+  margin-bottom: 36px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--paper);
+}
+.project-glance h2 {
+  font-size: 24px;
+  letter-spacing: -0.025em;
+}
+.project-glance dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 36px;
+  margin: 22px 0 0;
+}
+.project-glance dt {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--teal);
+}
+.project-glance dd {
+  margin: 5px 0 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.glance-technologies {
+  grid-column: 1 / -1;
+}
+.project-glance .case-actions {
+  margin-top: 22px;
+}
+@media (max-width: 700px) {
+  .project-glance {
+  padding: 22px;
+  margin-bottom: 28px;
+}
+  .project-glance dl {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+  .project-glance dd {
+  font-size: 13px;
+}
 }
 .case-screenshot {
   margin: 0;
@@ -1173,15 +1188,33 @@ svg {
 .not-found .button {
   margin-top: 28px;
 }
+@media (min-width: 1440px) {
+  .project-section > .container {
+  max-width: 1320px;
+}
+  .project-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+  .project-copy {
+  padding: 18px;
+}
+  .project-copy h3 {
+  font-size: 20px;
+}
+  .project-actions {
+  gap: 8px 14px;
+}
+  .project-actions .case-link {
+  margin-left: 0;
+}
+}
 @media (min-width: 1500px) {
-  .hero {
-    gap: 115px;
-  }
   .hero-visual {
-    max-width: 415px;
+    max-width: 350px;
   }
   .portrait-frame {
-    height: 470px;
+    height: 420px;
   }
 }
 @media (max-width: 1100px) {
@@ -1193,24 +1226,20 @@ svg {
     gap: 17px;
   }
   .hero {
-    gap: 45px;
-    grid-template-columns: 1.25fr 1fr;
+    gap: 40px;
+    grid-template-columns: minmax(0, 1fr) 300px;
   }
   .hero h1 {
     font-size: 57px;
   }
   .hero-statement {
-    font-size: 39px;
+    font-size: 30px;
   }
   .portrait-frame {
     height: 410px;
   }
   .hero-social {
     gap: 16px;
-  }
-  .hero-location {
-    margin-left: 0;
-    font-size: 10px;
   }
   .about-section {
     gap: 60px;
@@ -1220,7 +1249,6 @@ svg {
   }
   .project-copy h3 {
     font-size: 22px;
-    min-height: 88px;
   }
   .project-actions {
     gap: 12px;
@@ -1267,6 +1295,7 @@ svg {
     margin-left: 0;
   }
   .hero {
+    grid-template-columns: minmax(0, 1fr) 270px;
     gap: 32px;
     min-height: auto;
     padding-block: 65px;
@@ -1275,7 +1304,7 @@ svg {
     font-size: 49px;
   }
   .hero-statement {
-    font-size: 34px;
+    font-size: 30px;
   }
   .hero-intro {
     font-size: 13px;
@@ -1285,7 +1314,7 @@ svg {
     gap: 10px;
   }
   .hero-disciplines {
-    font-size: 8px;
+    font-size: 12px;
   }
   .hero .button {
     padding-inline: 14px;
@@ -1301,9 +1330,6 @@ svg {
   .portrait-caption {
     font-size: 8px;
     gap: 10px;
-  }
-  .caption-location {
-    font-size: 8px;
   }
   .hero-social {
     flex-wrap: wrap;
@@ -1331,12 +1357,8 @@ svg {
   .project-grid {
     gap: 20px;
   }
-  .project-grid > .project-card:last-child:nth-child(odd) {
-    width: calc((100% - 20px) / 2);
-  }
   .project-copy h3 {
     font-size: 20px;
-    min-height: 105px;
   }
   .project-copy > p:not(.eyebrow) {
     font-size: 12px;
@@ -1356,7 +1378,7 @@ svg {
   .project-actions .case-link {
     width: 100%;
     margin-top: -5px;
-    min-height: 30px;
+    min-height: 44px;
   }
   .skills-grid {
     gap: 30px;
@@ -1365,7 +1387,7 @@ svg {
     font-size: 16px;
   }
   .skill-group li {
-    font-size: 11px;
+    font-size: 12px;
   }
   .education-layout {
     grid-template-columns: 1fr 1.3fr;
@@ -1488,7 +1510,7 @@ svg {
     font-size: 52px;
   }
   .hero-statement {
-    font-size: 37px;
+    font-size: 32px;
     line-height: 1.14;
     margin-top: 15px;
   }
@@ -1497,7 +1519,7 @@ svg {
     margin-bottom: 22px;
   }
   .hero-disciplines {
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 0.05em;
     margin-top: 22px !important;
   }
@@ -1517,9 +1539,6 @@ svg {
     margin-top: 17px;
     align-items: center;
   }
-  .hero-location {
-    font-size: 10px;
-  }
   .hero-visual {
     max-width: 370px;
     width: 85%;
@@ -1533,30 +1552,12 @@ svg {
   .portrait-caption {
     font-size: 9px;
   }
-  .caption-location {
-    font-size: 8px;
-  }
   .portrait-detail {
     right: -21px;
     top: 65px;
   }
   .portrait {
     transform: scale(1.58);
-  }
-  .intro-strip > .container {
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding-block: 20px;
-    font-size: 11px;
-  }
-  .intro-strip span + span::before {
-    display: none;
-  }
-  .intro-strip span:not(:last-child)::after {
-    content: " /";
-    color: var(--teal);
-    margin-left: 8px;
   }
   .section {
     padding-block: 62px;
@@ -1581,9 +1582,6 @@ svg {
   .about-copy > p {
     font-size: 14px;
   }
-  .about-copy > .text-link {
-    margin-top: 15px;
-  }
   .heading-row {
     display: block;
     margin-bottom: 30px;
@@ -1598,17 +1596,14 @@ svg {
     grid-template-columns: 1fr;
     gap: 27px;
   }
-  .project-grid > .project-card:last-child:nth-child(odd) {
-    width: 100%;
-  }
   .project-preview {
-    aspect-ratio: 1.5;
+    aspect-ratio: 16 / 9;
   }
   .project-copy {
     padding: 25px;
   }
   .project-copy h3 {
-    font-size: 24px;
+    font-size: 22px;
     min-height: 0;
     line-height: 1.28;
   }
@@ -1620,7 +1615,7 @@ svg {
   }
   .project-actions {
     gap: 18px;
-    margin-top: 22px;
+    margin-top: auto;
   }
   .project-actions .case-link {
     width: auto;
@@ -1659,7 +1654,7 @@ svg {
     gap: 7px 0;
   }
   .skill-group li {
-    font-size: 11px;
+    font-size: 12px;
   }
   .education-layout {
     grid-template-columns: 1fr;
@@ -1741,7 +1736,7 @@ svg {
   .contact-links {
     margin-left: 0;
     max-width: 340px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 12px;
   }
   .contact-links .button {
@@ -1873,6 +1868,20 @@ svg {
     font-size: 38px;
   }
 }
+@media (max-width: 480px) {
+  .skills-grid {
+  grid-template-columns: 1fr;
+}
+  .skill-group h3 {
+  font-size: 18px;
+}
+  .skill-group ul {
+  margin-top: 12px;
+}
+  .skill-group li {
+  font-size: 13px;
+}
+}
 @media (max-width: 370px) {
   .container,
   .nav-shell {
@@ -1882,13 +1891,13 @@ svg {
     font-size: 46px;
   }
   .hero-statement {
-    font-size: 32px;
+    font-size: 29px;
   }
   .hero-social {
     gap: 10px;
   }
   .hero-disciplines {
-    font-size: 8px;
+    font-size: 12px;
   }
   .portrait-frame {
     height: 330px;
@@ -1946,7 +1955,6 @@ svg {
     transform: none;
   }
 }
-
 .case-sources {
   margin-top: 30px;
   padding-top: 25px;

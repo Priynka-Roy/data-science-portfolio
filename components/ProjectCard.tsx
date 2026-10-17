@@ -22,7 +22,7 @@ export function ProjectCard({
             src={project.image}
             alt={project.imageAlt}
             fill
-            sizes="(max-width: 760px) 100vw, 50vw"
+            sizes="(max-width: 700px) 100vw, (max-width: 1439px) 50vw, 25vw"
           />
           <span className="preview-label">
             Explore the case study
@@ -32,20 +32,20 @@ export function ProjectCard({
       </Link>
       <div className="project-copy">
         <p className="eyebrow">
-          <span>0{index + 1}</span>
+          <span>{String(index + 1).padStart(2, "0")}</span>
           {project.name}
         </p>
         <h3>
-          <Link href={`/projects/${project.slug}`}>{project.title}</Link>
+          <Link href={`/projects/${project.slug}`}>{project.card.title}</Link>
         </h3>
-        <p>{project.summary}</p>
+        <p>{project.card.description}</p>
         <ul className="project-highlights">
-          {project.highlights.map((highlight) => (
+          {project.card.highlights.map((highlight) => (
             <li key={highlight}>{highlight}</li>
           ))}
         </ul>
         <ul className="tags" aria-label="Technologies">
-          {project.tags.map((tag) => (
+          {project.card.tags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}
         </ul>
@@ -76,6 +76,7 @@ export function ProjectCard({
           <Link
             href={`/projects/${project.slug}`}
             className="text-link case-link"
+            aria-label={`View the ${project.name} case study`}
           >
             Case study
             <ArrowRight size={16} aria-hidden="true" />

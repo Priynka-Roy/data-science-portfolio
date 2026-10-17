@@ -22,6 +22,16 @@ export function CaseStudy({ project }: { project: Project }) {
             <span>{project.title}</span>
           </h1>
           <p className="case-summary">{project.summary}</p>
+        </header>
+        <section className="project-glance" aria-labelledby="glance-title">
+          <h2 id="glance-title">Project at a Glance</h2>
+          <dl>
+            <div><dt>Problem</dt><dd>{project.glance.problem}</dd></div>
+            <div><dt>Dataset</dt><dd>{project.glance.dataset}</dd></div>
+            <div><dt>Main methods</dt><dd>{project.glance.methods}</dd></div>
+            <div><dt>Key findings</dt><dd>{project.glance.finding}</dd></div>
+            <div className="glance-technologies"><dt>Technologies</dt><dd>{project.glance.technologies.join(" · ")}</dd></div>
+          </dl>
           <div className="case-actions">
             <a
               href={project.live}
@@ -43,12 +53,7 @@ export function CaseStudy({ project }: { project: Project }) {
               View source<span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
-          <ul className="tags" aria-label="Technologies">
-            {project.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        </header>
+        </section>
         <figure className="case-screenshot">
           <div>
             <Image
@@ -115,7 +120,7 @@ export function CaseStudy({ project }: { project: Project }) {
                       </thead>
                       <tbody>
                         {section.table.rows.map((row) => (
-                          <tr key={row[0]}>
+                          <tr key={row.join(" | ")}>
                             {row.map((cell, cellIndex) =>
                               cellIndex === 0 ? (
                                 <th key={cellIndex} scope="row">{cell}</th>

@@ -5,6 +5,19 @@ export type ProjectSection = {
   table?: { caption: string; columns: string[]; rows: string[][] };
   visual?: { src: string; alt: string; caption: string };
 };
+export type ProjectCard = {
+  title: string;
+  description: string;
+  highlights: [string, string];
+  tags: [string, string, string];
+};
+export type ProjectGlance = {
+  problem: string;
+  dataset: string;
+  methods: string;
+  finding: string;
+  technologies: string[];
+};
 export type Project = {
   slug: string;
   name: string;
@@ -12,6 +25,8 @@ export type Project = {
   category?: string;
   seoTitle?: string;
   summary: string;
+  card: ProjectCard;
+  glance: ProjectGlance;
   image: string;
   imageAlt: string;
   tags: string[];
@@ -25,14 +40,14 @@ export type Project = {
   sources: { label: string; url: string }[];
 };
 
-const industrialGuard = "https://github.com/Priynka-Roy/industrialguard-explainable-predictive-maintenance";
+const industrialGuard = "https://github.com/Priynka-Roy/Predictive-Maintenance-and-Equipment-Health-Monitoring";
 const industrialDocs = `${industrialGuard}/blob/main/explainable-predictive-maintenance/docs`;
-const enerTwin = "https://github.com/Priynka-Roy/enertwin-industrial-energy-digital-twin";
+const enerTwin = "https://github.com/Priynka-Roy/Industrial-Energy-Analytics-and-Operations-Optimization";
 const energyDocs = `${enerTwin}/blob/main/docs`;
-const creditRisk = "https://github.com/Priynka-Roy/creditrisk-ai-explainable-credit-risk";
+const creditRisk = "https://github.com/Priynka-Roy/Credit-Risk-Analytics-and-Model-Validation";
 const creditDocs = `${creditRisk}/blob/c561888742e020a52448df28fffa6a1986bfbbc0/docs`;
 
-const actuaryLab = "https://github.com/Priynka-Roy/actuarylab-ai-insurance-pricing-risk";
+const actuaryLab = "https://github.com/Priynka-Roy/Insuarance-and-Actuarial-Analytics";
 const actuaryRevision = "726b2474f9a93aee2e99a6bebca6148584618013";
 const actuaryDocs = `${actuaryLab}/blob/${actuaryRevision}/docs`;
 
@@ -40,6 +55,19 @@ export const projects: Project[] = [
   {
     slug: "industrialguard-ai",
     name: "IndustrialGuard AI",
+    card: {
+      title: "Predictive Maintenance & Equipment Health Monitoring",
+      description: "Historical compressor monitoring with interpretable anomaly detection and chronological evaluation.",
+      highlights: ["1.52 million real sensor readings", "Chronological monitoring evaluation"],
+      tags: ["Python", "scikit-learn", "Streamlit"],
+    },
+    glance: {
+      problem: "Identify unusual compressor behavior and assess the inspection workload created by alerts.",
+      dataset: "UCI MetroPT-3: 1,516,948 sensor readings from one compressor in 2020.",
+      methods: "Robust deviations, regularized covariance, Isolation Forest, causal features, and chronological calibration.",
+      finding: "Selected policy overlaps 1 of 3 retrospective reported intervals, with 15 unannotated alert episodes; no general failure-prediction claim.",
+      technologies: ["Python", "pandas", "scikit-learn", "Streamlit"],
+    },
     title: "Explainable Predictive Maintenance & Equipment Health Monitoring",
     summary: "A historical condition-monitoring application that brings real compressor telemetry, statistical anomaly detection, and transparent model evidence into one reviewable workflow.",
     image: "/images/industrialguard.jpg",
@@ -89,6 +117,19 @@ export const projects: Project[] = [
   {
     slug: "enertwin-ai",
     name: "EnerTwin AI",
+    card: {
+      title: "Industrial Energy Analytics & Operations Optimization",
+      description: "Next-day electricity forecasting and uncertainty-aware workload scheduling under explicit operating assumptions.",
+      highlights: ["35,040 real energy observations", "Forecasting and robust scheduling"],
+      tags: ["Python", "SciPy HiGHS", "Streamlit"],
+    },
+    glance: {
+      problem: "Schedule hypothetical flexible workloads when next-day electricity demand is uncertain.",
+      dataset: "UCI Steel Industry Energy Consumption: 35,040 quarter-hour observations from one facility in 2018.",
+      methods: "96-step forecasting, residual uncertainty bands, deterministic and finite-scenario robust linear programming.",
+      finding: "Forecast MAE is 10.870 kWh per interval. At a 700 kW cap, robust scheduling is feasible on 18 of 92 retrospective days, with no paired cost improvement established.",
+      technologies: ["Python", "scikit-learn", "SciPy HiGHS", "Streamlit"],
+    },
     title: "Industrial Energy Forecasting, Digital Twin & Operations Optimization",
     summary: "A data-driven energy simulator combining complete 24-hour demand forecasts, empirical uncertainty, and deterministic and robust workload scheduling under explicit assumptions.",
     image: "/images/enertwin.jpg",
@@ -142,6 +183,19 @@ export const projects: Project[] = [
   {
     slug: "creditrisk-ai",
     name: "CreditRisk AI",
+    card: {
+      title: "Credit Risk Analytics & Model Validation",
+      description: "Historical default modeling with probability calibration, statistical validation, and simulated portfolio losses.",
+      highlights: ["30,000 historical customer records", "Calibration and bootstrap uncertainty"],
+      tags: ["scikit-learn", "Monte Carlo", "Streamlit"],
+    },
+    glance: {
+      problem: "Estimate historical next-month payment default and interpret model reliability and hypothetical portfolio losses.",
+      dataset: "UCI Default of Credit Card Clients: 30,000 Taiwanese customer records, with a 6,000-customer test partition.",
+      methods: "Logistic regression, gradient boosting, calibration diagnostics, paired bootstrap, and Monte Carlo loss simulation.",
+      finding: "Selected boosting ROC-AUC is 0.7804 on the original historical test; retrospective comparisons quantify uncertainty, without prospective banking validation.",
+      technologies: ["Python", "pandas", "scikit-learn", "Plotly", "Streamlit"],
+    },
     title: "Explainable Credit Risk Modeling & Model Validation",
     category: "Banking · Credit Risk · Financial Analytics",
     seoTitle: "CreditRisk AI | Banking Credit Risk & Model Validation",
@@ -259,6 +313,19 @@ export const projects: Project[] = [
   {
     slug: "actuarylab-ai",
     name: "ActuaryLab AI",
+    card: {
+      title: "Insurance Pricing & Portfolio Risk Analytics",
+      description: "Exposure-aware claims modeling, pure-premium estimation, and hypothetical portfolio loss simulation.",
+      highlights: ["668,896 reconciled historical policies", "15.49% aggregate holdout underprediction"],
+      tags: ["GLM & Tweedie", "Monte Carlo", "Streamlit"],
+    },
+    glance: {
+      problem: "Model historical motor claims cost and explore sensitivity of hypothetical premiums and portfolio losses.",
+      dataset: "OpenML freMTPL2 frequency and severity: 668,896 reconciled French motor policies from 678,013 source policies.",
+      methods: "Exposure-aware Poisson, Gamma severity, Tweedie comparisons, policy bootstrap, and Monte Carlo simulation.",
+      finding: "Selected two-part model underpredicts aggregate holdout cost by 15.49%; hypothetical pricing and tails depend on declared assumptions.",
+      technologies: ["Python", "pandas", "scikit-learn", "SciPy", "Plotly", "Streamlit"],
+    },
     title: "Insurance Pricing, Claims Modeling & Portfolio Risk Platform",
     category: "Insurance Analytics · Actuarial Statistics · Quantitative Risk",
     seoTitle: "ActuaryLab AI | Insurance Pricing & Portfolio Risk",
