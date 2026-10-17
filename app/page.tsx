@@ -16,6 +16,8 @@ import {
   research,
 } from "@/content/profile";
 import { projects } from "@/content/projects";
+import { trainingRecords } from "@/content/training";
+import { TrainingCard } from "@/components/TrainingCard";
 import { ExternalLink, SectionHeading } from "@/components/Elements";
 import { ProjectCard } from "@/components/ProjectCard";
 
@@ -136,6 +138,24 @@ export default function Home() {
         </div>
       </section>
       <section
+        id="training"
+        className="section container training-section"
+        aria-labelledby="training-title"
+      >
+        <div className="heading-row">
+          <div>
+            <p className="eyebrow"><span>03</span>Professional development</p>
+            <h2 id="training-title">Training &amp; Certifications</h2>
+          </div>
+          <p className="heading-aside">
+            Continuous learning through structured training and practical skill development.
+          </p>
+        </div>
+        <div className="training-list">
+          {trainingRecords.map(training => <TrainingCard key={training.id} training={training} />)}
+        </div>
+      </section>
+      <section
         id="skills"
         className="section container"
         aria-labelledby="skills-title"
@@ -143,7 +163,7 @@ export default function Home() {
         <div className="heading-row">
           <div>
             <p className="eyebrow">
-              <span>03</span>Technical toolkit
+              <span>04</span>Technical toolkit
             </p>
             <h2 id="skills-title">Methods with purpose.</h2>
           </div>
@@ -174,7 +194,7 @@ export default function Home() {
         <div className="container education-layout">
           <div>
             <p className="eyebrow">
-              <span>04</span>Education
+              <span>05</span>Education
             </p>
             <h2 id="education-title">
               A foundation in Statistics and Data Analytics.
@@ -228,7 +248,7 @@ export default function Home() {
         aria-label="Research and publications"
       >
         <SectionHeading
-          number="05"
+          number="06"
           eyebrow="Research & publications"
           title="Asking better questions."
           description="Statistical research connecting rigorous methods with questions that matter."
@@ -276,7 +296,7 @@ export default function Home() {
         <div className="container contact-layout">
           <div>
             <p className="eyebrow">
-              <span>06</span>Get in touch
+              <span>07</span>Get in touch
             </p>
             <h2 id="contact-title">
               Let’s talk

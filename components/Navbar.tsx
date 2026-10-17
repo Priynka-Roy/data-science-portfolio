@@ -9,6 +9,7 @@ const navigation = [
   "Home",
   "About",
   "Projects",
+  "Training",
   "Skills",
   "Education",
   "Research",

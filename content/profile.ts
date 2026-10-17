@@ -35,7 +35,7 @@ export const skillGroups: SkillGroup[] = [
   { title: "Statistics & Predictive Modeling", items: ["Statistical inference", "Regression analysis", "Generalized linear models", "Time-series forecasting", "Probability calibration", "Bootstrap inference", "Statistical model validation"] },
   { title: "Machine Learning", items: ["scikit-learn", "Supervised learning", "Unsupervised learning", "Gradient boosting", "Anomaly detection", "Explainable AI", "Model evaluation"] },
   { title: "Optimization & Quantitative Risk", items: ["Linear programming", "Scenario analysis", "Monte Carlo simulation", "Credit risk analytics", "Insurance pricing", "Portfolio risk analysis"] },
-  { title: "Visualization & Development Tools", items: ["Power BI", "Plotly", "Streamlit", "Microsoft Excel", "Git", "GitHub"] },
+  { title: "Visualization & Development Tools", items: ["Power BI", "Power Query", "DAX", "Plotly", "Streamlit", "Microsoft Excel", "Git", "GitHub"] },
 ];
 
 export const education: Education[] = [
