@@ -532,6 +532,124 @@ svg {
   color: var(--muted);
   font-size: 11px;
 }
+.training-section {
+  padding-block: 80px 64px;
+  border-bottom: 1px solid var(--line);
+}
+.training-list {
+  display: grid;
+  gap: 24px;
+}
+.training-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 38px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 30px;
+  background: var(--white);
+}
+.training-card-text {
+  grid-template-columns: 1fr;
+}
+.training-copy {
+  min-width: 0;
+}
+.training-provider {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.training-card h3 {
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+.training-credential {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 8px !important;
+}
+.training-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin: 22px 0 0;
+}
+.training-details dt {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.training-details dd {
+  margin: 3px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--navy);
+}
+.training-description {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 20px !important;
+}
+.training-skills {
+  margin-top: 17px;
+}
+.training-skills li {
+  font-size: 10px;
+  padding: 6px 8px;
+}
+.training-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+  margin-top: 23px;
+}
+.training-preview {
+  margin: 0;
+  min-width: 0;
+}
+.training-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.training-preview figcaption {
+  margin-top: 12px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+@media (max-width: 1000px) {
+  .training-card {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 25px;
+    padding: 25px;
+  }
+  .training-card-text { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .training-section { padding-block: 62px 48px; }
+  .training-card { grid-template-columns: 1fr; padding: 24px; gap: 28px; }
+  .training-card h3 { font-size: 25px; }
+  .training-details { gap: 12px 22px; }
+  .training-description { font-size: 13px; }
+  .training-actions { gap: 10px 18px; }
+  .training-actions .button, .training-actions .text-link { font-size: 12px; }
+  .training-preview { max-width: 400px; }
+}
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1455,24 +1573,14 @@ svg {
     width: 100%;
   }
 }
-@media (max-width: 700px) {
-  html {
-    scroll-padding-top: 90px;
-  }
-  .container,
-  .nav-shell {
-    width: calc(100% - 40px);
-  }
-  .site-header {
-    height: 72px;
-  }
+@media (max-width: 900px) {
   .menu-toggle {
     display: flex;
   }
   .navigation {
     display: none;
     position: absolute;
-    top: 72px;
+    top: 100%;
     left: 0;
     right: 0;
     background: white;
@@ -1498,6 +1606,18 @@ svg {
     margin-inline: 12px;
     width: max-content;
     padding-inline: 16px;
+  }
+}
+@media (max-width: 700px) {
+  html {
+    scroll-padding-top: 90px;
+  }
+  .container,
+  .nav-shell {
+    width: calc(100% - 40px);
+  }
+  .site-header {
+    height: 72px;
   }
   .hero {
     display: flex;

@@ -45,6 +45,8 @@ Next.js App Router, TypeScript, Tailwind CSS, self-hosted Inter, Lucide icons, a
 - `components/`: navigation, reusable sections, project cards, case studies, footer
 - `content/profile.ts`: editable professional information, education, research, skills
 - `content/projects.ts`: source-backed case studies, computed results, limitations
+- `content/training.ts`: completed training records and verified credential links
+- `public/certificates/`: original public certificate copies, unchanged from supplied files
 - `public/images/`: authentic portrait and screenshots from the project repositories
 - `tests/`: navigation, content, asset, origin-validation, and structural accessibility tests
 - `.github/workflows/ci.yml`: reproducible installation, lint, build, typecheck, tests
@@ -63,3 +65,7 @@ The MIT license applies to source code; Priynka Roy's photograph, personal conte
 Deploy the repository root as a Next.js project on Vercel with Node.js 24. Canonical metadata uses the platform's actual production hostname, or the optional `NEXT_PUBLIC_SITE_URL` HTTPS origin after a verified domain is assigned. Local builds omit canonical URLs; a local-only social image URL warning is expected when no public origin is configured.
 
 Read `docs/DEPLOYMENT.md` for historical deployment evidence and `docs/PROFESSIONAL_POLISH_REVIEW.md` for the current refinement scope and remaining verification. Edit factual content in the typed content files. Keep private source documents outside public assets; the website no longer publishes a CV.
+
+## Training & Certifications
+
+The homepage includes verified completed training between Projects and Skills. The first record is DataCamp’s Data Analyst in Power BI career track (50 hours, completed September 23, 2026), supported by the [original certificate](https://data-science-portfolio-olive.vercel.app/certificates/datacamp-power-bi-career-track.pdf) and [official career-track page](https://www.datacamp.com/tracks/data-analyst-in-power-bi). It is a DataCamp Statement of Accomplishment, not evidence of a Microsoft examination credential. Add future completed credentials through `content/training.ts`; do not invent qualifications. See `docs/TRAINING_REVIEW.md` for source/privacy and verification details.

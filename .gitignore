@@ -12,3 +12,6 @@ tmp/
 *.log
 
 *.tsbuildinfo
+
+# Original supplied certificate; only the reviewed public copy is published.
+/power bi certificate.pdf
