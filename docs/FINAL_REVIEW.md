@@ -1,5 +1,7 @@
 # Independent content, recruiter, and privacy review
 
+> Historical review of the dated release below. On 17 October 2026 the owner requested professional refinements and removal of public CV downloads. Earlier CV-preservation and layout statements describe that release only; see `PROFESSIONAL_POLISH_REVIEW.md` and `CV_PRIVACY_REVIEW.md` for the current policy.
+
 Reviewed 14 October 2026 against the supplied task, original résumé text/link annotations, current upstream project documentation, typed portfolio content, homepage/case-study TSX, public images, and public CV.
 
 ## Findings

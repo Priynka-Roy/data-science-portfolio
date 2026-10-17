@@ -1,5 +1,7 @@
 # ActuaryLab AI integration review
 
+> Historical review of the dated release below. On 17 October 2026 the owner requested professional refinements and removal of public CV downloads. Earlier CV-preservation and layout statements describe that release only; see `PROFESSIONAL_POLISH_REVIEW.md` and `CV_PRIVACY_REVIEW.md` for the current policy.
+
 Reviewed 16 October 2026 on feature/add-actuarylab-ai.
 
 ## Five review perspectives

@@ -1,10 +1,10 @@
 # Content provenance and publication boundaries
 
-Reviewed on 13 October 2026. Content lives in typed `content/profile.ts` and `content/projects.ts`; personal source files remain local and excluded from the public repository. No source project repository was modified.
+Initial source review: 13 October 2026. Current publication boundaries updated 17 October 2026. Content lives in typed `content/profile.ts` and `content/projects.ts`; personal source files remain local and excluded from the public repository. No source project repository was modified.
 
 ## Personal and academic information
 
-The user-supplied résumé was read locally, including its PDF hyperlink annotations. It supports the name, city, email, degree dates, undergraduate research, publication, scholarships, Python/R/SPSS, Power BI, and Excel. The current task supplies Statistics specialization, ongoing privacy/longitudinal research, career interests, and the two public app addresses. Education descriptions are interests/current studies rather than assertions that every suggested course has been completed.
+The user-supplied résumé was read locally, including its PDF hyperlink annotations. It supports the name, city, email, degree dates, undergraduate research, publication, scholarships, Python/R/SPSS, Power BI, and Excel. The initial task supplied Statistics specialization, ongoing privacy/longitudinal research, career interests, and the initial public app addresses. Later owner instructions supply the four current repository names, public app addresses, basic SQL knowledge, and current thesis details. Education descriptions are interests/current studies rather than assertions that every suggested course has been completed.
 
 Verified links extracted from the résumé:
 
@@ -15,19 +15,19 @@ Verified links extracted from the résumé:
 
 “Research Scholarship” and “Merit Scholarship” follow the résumé's exact award names. The latter issuer is described there as “Faculty of Exact Science, Turku University”; the portfolio retains the singular faculty wording and standardizes the university name to University of Turku.
 
-The résumé's “Microsoft Certified” wording is attached to an ongoing DataCamp career track, not evidence of an awarded Microsoft credential. No certification claim is published. Its older MBSTU thesis description is not recast as the current Turku thesis. The task's ongoing research wording is used without inventing a public title or completion date.
+The résumé's “Microsoft Certified” wording is attached to an ongoing DataCamp career track, not evidence of an awarded Microsoft credential. No certification claim is published. Its older MBSTU thesis description is not recast as the current Turku thesis. The initial task used conservative ongoing research wording. On 17 October 2026, the user supplied the current thesis title, “Privacy Risks in Synthetic Longitudinal Data: Disclosure Scenarios and Empirical Evaluation”, and period September 2026–Present. These are user-provided facts; no completed results are claimed.
 
-Private contact/biographical fields from the original PDF are omitted. The original résumé is not a public download. The generated public CV contains professional information and city/email only. The portrait uses the authentic supplied photograph; cropping and browser image optimization do not replace or alter identity.
+Private contact/biographical fields from the original PDF are omitted. The original résumé is not a public download. The formerly generated public CV and its generator were removed on 17 October 2026 at the owner's request, with a byte-verified private backup outside the repository. Earlier Git and cache copies are not erased by this change. The portrait uses the authentic supplied photograph; cropping and browser image optimization do not replace or alter identity.
 
 ## IndustrialGuard AI
 
 Current public GitHub content was read using read-only GitHub API requests, including the root README and nested methodology, V2 results, limitations, and case study. Source documents:
 
-- [README](https://github.com/Priynka-Roy/industrialguard-explainable-predictive-maintenance/blob/main/README.md)
-- [Methodology](https://github.com/Priynka-Roy/industrialguard-explainable-predictive-maintenance/blob/main/explainable-predictive-maintenance/docs/METHODOLOGY.md)
-- [V2 results](https://github.com/Priynka-Roy/industrialguard-explainable-predictive-maintenance/blob/main/explainable-predictive-maintenance/docs/V2_RESULTS.md)
-- [Limitations](https://github.com/Priynka-Roy/industrialguard-explainable-predictive-maintenance/blob/main/explainable-predictive-maintenance/docs/LIMITATIONS.md)
-- [Case study](https://github.com/Priynka-Roy/industrialguard-explainable-predictive-maintenance/blob/main/explainable-predictive-maintenance/docs/PORTFOLIO_CASE_STUDY.md)
+- [README](https://github.com/Priynka-Roy/Predictive-Maintenance-and-Equipment-Health-Monitoring/blob/main/README.md)
+- [Methodology](https://github.com/Priynka-Roy/Predictive-Maintenance-and-Equipment-Health-Monitoring/blob/main/explainable-predictive-maintenance/docs/METHODOLOGY.md)
+- [V2 results](https://github.com/Priynka-Roy/Predictive-Maintenance-and-Equipment-Health-Monitoring/blob/main/explainable-predictive-maintenance/docs/V2_RESULTS.md)
+- [Limitations](https://github.com/Priynka-Roy/Predictive-Maintenance-and-Equipment-Health-Monitoring/blob/main/explainable-predictive-maintenance/docs/LIMITATIONS.md)
+- [Case study](https://github.com/Priynka-Roy/Predictive-Maintenance-and-Equipment-Health-Monitoring/blob/main/explainable-predictive-maintenance/docs/PORTFOLIO_CASE_STUDY.md)
 
 Published results identify the selected covariance policy explicitly: 0/1 April development overlaps; 1/3 retrospective overlaps; 15 unannotated episodes, or 0.16060 per unannotated observed day. The reduced Isolation Forest's 2/3 overlaps and 22 episodes are identified as a different, unselected policy. A descriptive 40-minute July warning is explicitly retrospective. Row counts are not failure sample sizes. No probability, RUL, prevented downtime, or realized savings claim is made.
 
@@ -37,11 +37,11 @@ The authentic image is copied from `explainable-predictive-maintenance/docs/asse
 
 Current root README, V2 methodology, results, limitations, and case study were read via read-only GitHub API:
 
-- [README](https://github.com/Priynka-Roy/enertwin-industrial-energy-digital-twin/blob/main/README.md)
-- [V2 methodology](https://github.com/Priynka-Roy/enertwin-industrial-energy-digital-twin/blob/main/docs/V2_METHODOLOGY.md)
-- [V2 results](https://github.com/Priynka-Roy/enertwin-industrial-energy-digital-twin/blob/main/docs/V2_RESULTS.md)
-- [Limitations](https://github.com/Priynka-Roy/enertwin-industrial-energy-digital-twin/blob/main/docs/LIMITATIONS.md)
-- [Case study](https://github.com/Priynka-Roy/enertwin-industrial-energy-digital-twin/blob/main/docs/PORTFOLIO_CASE_STUDY.md)
+- [README](https://github.com/Priynka-Roy/Industrial-Energy-Analytics-and-Operations-Optimization/blob/main/README.md)
+- [V2 methodology](https://github.com/Priynka-Roy/Industrial-Energy-Analytics-and-Operations-Optimization/blob/main/docs/V2_METHODOLOGY.md)
+- [V2 results](https://github.com/Priynka-Roy/Industrial-Energy-Analytics-and-Operations-Optimization/blob/main/docs/V2_RESULTS.md)
+- [Limitations](https://github.com/Priynka-Roy/Industrial-Energy-Analytics-and-Operations-Optimization/blob/main/docs/LIMITATIONS.md)
+- [Case study](https://github.com/Priynka-Roy/Industrial-Energy-Analytics-and-Operations-Optimization/blob/main/docs/PORTFOLIO_CASE_STUDY.md)
 
 Point MAE 10.870 and RMSE 19.408 kWh/interval refer to unchanged original forecasts; new V2 analysis of those dates is retrospective. Weekly seasonal MAE is 12.942. The rounded 16.02% relative MAE difference follows the documented original comparison, not a new experiment.
 
@@ -53,6 +53,11 @@ The authentic image is copied from `docs/assets/v2/forecast.jpg`. [UCI Steel Ind
 
 ## Deliberate omissions and future updates
 
-The portfolio prioritizes the two verified industrial projects. Older predictive-maintenance résumé items are not duplicated as additional independent achievements. No employer affiliation, partnership, industrial production deployment, thesis completion, citation count, or scholarship amount is invented. Suggestions of Jupyter, LaTeX, and econometrics are not treated as demonstrated tools/course completion without further evidence.
+The initial portfolio prioritized two verified industrial projects; CreditRisk and ActuaryLab were subsequently added with their own pinned provenance documents. Older predictive-maintenance résumé items are not duplicated as additional independent achievements. No employer affiliation, partnership, industrial production deployment, thesis completion, citation count, or scholarship amount is invented. Suggestions of Jupyter, LaTeX, and econometrics are not treated as demonstrated tools/course completion without further evidence.
 
 The task-supplied Streamlit URLs are linked directly. Public availability must be verified separately during site QA; a source README's older local-only wording does not override the user's new deployment URLs. Future revisions should re-read upstream project results rather than silently carrying metrics into a new model version.
+
+
+## Professional refinement evidence — 17 October 2026
+
+Scholarship names are source-supported. Award dates must come from explicit source evidence, never degree enrollment periods; any missing dates remain unresolved in `PROFESSIONAL_POLISH_REVIEW.md`. User-reported SQL is displayed at Basic level. Data preparation, integration and validation terminology must reflect actual repository workflows; enterprise ETL platforms and certifications are not inferred. The owner corrected the initially reversed financial repository names. Links now match verified application contents; ActuaryLab’s actual repository spelling is `Insuarance-and-Actuarial-Analytics`, as documented in `PROFESSIONAL_POLISH_REVIEW.md`. Source document paths and pinned revision identifiers in the financial-project provenance documents are preserved.

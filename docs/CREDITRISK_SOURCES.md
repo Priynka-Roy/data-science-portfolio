@@ -1,9 +1,9 @@
 # CreditRisk AI portfolio evidence
 
 The third portfolio case study was checked against the latest remote `main` of
-[`Priynka-Roy/creditrisk-ai-explainable-credit-risk`](https://github.com/Priynka-Roy/creditrisk-ai-explainable-credit-risk)
+[`Priynka-Roy/Insurance-and-Actuarial-Analytics`](https://github.com/Priynka-Roy/Credit-Risk-Analytics-and-Model-Validation)
 on 15 October 2026. The inspected source commit was
-[`c561888742e020a52448df28fffa6a1986bfbbc0`](https://github.com/Priynka-Roy/creditrisk-ai-explainable-credit-risk/tree/c561888742e020a52448df28fffa6a1986bfbbc0).
+[`c561888742e020a52448df28fffa6a1986bfbbc0`](https://github.com/Priynka-Roy/Credit-Risk-Analytics-and-Model-Validation/tree/c561888742e020a52448df28fffa6a1986bfbbc0).
 Repository content was fetched through the authenticated GitHub API at this exact
 commit. Case-study documentation links are pinned to it so the evidence remains
 stable as the analytical project evolves. No files in the CreditRisk repository

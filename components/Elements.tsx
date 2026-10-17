@@ -1,6 +1,5 @@
-import { ArrowUpRight, Download, CodeXml } from "lucide-react";
+import { ArrowUpRight, CodeXml } from "lucide-react";
 import type { ReactNode } from "react";
-import { profile } from "@/content/profile";
 
 export function ExternalLink({
   href,
@@ -21,18 +20,6 @@ export function ExternalLink({
       {children}
       <ArrowUpRight size={16} aria-hidden="true" />
       <span className="sr-only"> (opens in a new tab)</span>
-    </a>
-  );
-}
-export function CVLink({
-  className = "button button-outline",
-}: {
-  className?: string;
-}) {
-  return (
-    <a className={className} href={profile.cvUrl} download>
-      <Download size={17} aria-hidden="true" />
-      Download CV
     </a>
   );
 }

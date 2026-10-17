@@ -1,6 +1,8 @@
-# Production deployment and verification
+# Historical production deployment and verification
 
 Verified 14 October 2026.
+
+This is evidence from the initial two-project release, not a statement of the latest production contents. Subsequent integrations added CreditRisk and ActuaryLab. The 17 October 2026 refinement removes public CV downloads and modernizes professional content; final deployment verification must confirm that release separately.
 
 - Public canonical website: https://data-science-portfolio-olive.vercel.app/
 - Owner-name alias: https://data-science-portfolio-priynka-roy.vercel.app/
@@ -30,4 +32,4 @@ The Vercel connector's build-log endpoint denied access, but deployment status, 
 
 ## Future updates
 
-Edit content/profile.ts and content/projects.ts for factual changes. Keep public CV edits in the reviewed generator, render and inspect both pages, and never replace the public PDF with the private original. Refresh case-study evidence and screenshots when the underlying projects change. A custom domain is optional; verify it before setting NEXT_PUBLIC_SITE_URL.
+Edit content/profile.ts and content/projects.ts for factual changes. The public CV and generator are now removed; keep all private resumes outside public build assets. Do not restore a public CV without a new owner instruction. Refresh case-study evidence and screenshots when the underlying projects change. A custom domain is optional; verify it before setting NEXT_PUBLIC_SITE_URL.
